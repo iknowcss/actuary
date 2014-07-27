@@ -1,0 +1,3 @@
+window.actuary = {
+  vm  : {}
+};

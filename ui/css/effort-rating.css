@@ -1,0 +1,51 @@
+/* Effort rating component */
+
+.effort-rating button {
+  font-family: fontello;
+  font-size: 16px;
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  text-align: center;
+  line-height: 1.1em;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  margin: 0 0.5em;
+  padding: 0;
+  outline: 0;
+}
+
+.effort-rating button:before {
+  width: 1.1em;
+  height: 1.1em;
+  display: inline-block;
+}
+
+.effort-rating button.effort-clear:before {
+  content: '\e802';
+}
+
+.effort-rating button.effort-clear:hover:before {
+  color: rgb(236, 65, 52);
+}
+
+.effort-rating button.effort-bubble:before {
+  content: '\e800';
+}
+
+/*.effort-rating button.effort-bubble:hover:before,*/
+.effort-rating button.effort-bubble.active:before {
+  content: '\e801';
+  top: -0.15em;
+}
+
+.effort-rating.rating-1 button.effort-bubble.active:before {
+  color: rgb(0, 153, 205);
+}
+.effort-rating.rating-2 button.effort-bubble.active:before {
+  color: rgb(251, 150, 0);
+}
+.effort-rating.rating-3 button.effort-bubble.active:before {
+  color: rgb(236, 65, 52);
+}

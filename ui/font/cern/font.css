@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'cern';
+  src:  url('CernBook-webfont.eot');
+  src:  url('CernBook-webfont.eot?#iefix') format('embedded-opentype'),
+        url('CernBook-webfont.woff') format('woff'),
+        url('CernBook-webfont.ttf') format('truetype'),
+        url('CernBook-webfont.svg#CernMed') format('svg');
+}
