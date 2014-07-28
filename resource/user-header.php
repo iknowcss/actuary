@@ -1,4 +1,4 @@
-<div class="grid_6 align-right header" id="user-header">
+<nav class="right">
   <strong><? echo $userName; ?></strong>
-  <a href="./">Log out</a>
-</div>
+  <a id="logout" href="./">Log out</a>
+</nav>

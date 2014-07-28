@@ -3,9 +3,9 @@
 <script type="text/javascript" src="ui/js/view-model/login-form.js"></script>
 <script type="text/javascript" src="ui/js/page/login-page.js"></script>
 
-<section>
+<header id="logged-out">
   <h1>JIRA Estimation App</h1>
-</section>
+</header>
 
 <div id="login-page">
 

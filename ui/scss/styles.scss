@@ -17,7 +17,7 @@ a {
   &:active { color: rgb(236, 65, 52); }
 }
 
-section {
+section, header {
   @include row();
 
   h1, h2, h3, h4, h5, h6 {
@@ -36,18 +36,8 @@ form {
     padding: { left: 0.25em; right: 0.25em; }
   }
 
-  button {
-    border-radius: 2px;
-    border: 1px solid #a2a2a2;
-    background: -webkit-linear-gradient(#f7f7f7, #dddddd); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#f7f7f7, #dddddd); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#f7f7f7, #dddddd); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#f7f7f7, #dddddd); /* Standard syntax */
-    line-height: 1.5;
-  }
-
   fieldset {
-    $fieldSpan: 2;
+    $fieldSpan: 3;
     $inputSpan: 4;
 
     @include row();
@@ -62,21 +52,67 @@ form {
       text-align: right;
       line-height: 1.75em;
     }
-    input { 
+    input {
       box-sizing: border-box;
       @include row-cell($inputSpan);
     }
 
     &.action {
-      input, button {
+      input, button, a {
         @include row-cell($inputSpan);
         @include row-push($fieldSpan);
+        line-height: 1.5;
+        &.split {
+          @include row-cell($inputSpan / 2);
+        }
+      }
+      button {
+        border-radius: 2px;
+        border: 1px solid #a2a2a2;
+        background: -webkit-linear-gradient(#f7f7f7, #dddddd); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#f7f7f7, #dddddd); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#f7f7f7, #dddddd); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#f7f7f7, #dddddd); /* Standard syntax */
+        margin: { top: 0; bottom: 0; }
+        padding: { top: 0; bottom: 0; }
+      }
+      a {
+        text-align: center;
+        padding: { top: 1px; bottom: 1px }
       }
     }
   }
 }
 
+header#logged-in {
+  padding-top: 1em;
+
+  nav.left {
+    @include row-cell(6);
+    & > ul > li {
+      float: left;
+      &:first-child:before {
+        content: '';
+        margin: 0;
+      }
+      &:before {
+        content: '>';
+        margin: 0 0.5em;
+      }
+    }
+  }
+  nav.right {
+    @include row-cell(6);
+    text-align: right;
+  }
+
+  #logout {
+    margin-left: 0.5em;
+  }
+}
+
 @import 'page/login';
+@import 'page/card-list';
 
 .grid-overlay-section {
   height: 100%;

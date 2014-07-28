@@ -1,0 +1,18 @@
+#card-list-page {
+  form#card-list-create-form {
+    label, input {
+      @include row-push(1);
+    }
+    button, a {
+      @include row-push(4);
+    }
+  }
+
+  section#previous-cards {
+    ul {
+      @include row-cell(3);
+      @include row-push(1);
+      list-style: disc;
+    }
+  }
+}

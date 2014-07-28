@@ -9,7 +9,7 @@
 
   #login-form {
     label, input {
-      @include row-push(2);
+      @include row-push(1);
     }
     button {
       @include row-push(4);
