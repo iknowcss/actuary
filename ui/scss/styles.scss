@@ -1,0 +1,99 @@
+@import 'reset';
+@import '960';
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1em; }
+
+h1, h2, h3, h4, h5, h6 {
+  padding-top: 0.75em;
+  padding-bottom: 0.25em;
+}
+
+a {
+  color: rgb(0, 153, 205);
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+  &:active { color: rgb(236, 65, 52); }
+}
+
+section {
+  @include row();
+
+  h1, h2, h3, h4, h5, h6 {
+    @include row-cell(12);
+  }
+}
+
+form {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+
+  input:not([type]),
+  input[type='text'] {
+    border: 1px solid #434443;
+    border-radius: 2px;
+    padding: { left: 0.25em; right: 0.25em; }
+  }
+
+  button {
+    border-radius: 2px;
+    border: 1px solid #a2a2a2;
+    background: -webkit-linear-gradient(#f7f7f7, #dddddd); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f7f7f7, #dddddd); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f7f7f7, #dddddd); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f7f7f7, #dddddd); /* Standard syntax */
+    line-height: 1.5;
+  }
+
+  fieldset {
+    $fieldSpan: 2;
+    $inputSpan: 4;
+
+    @include row();
+
+    margin-top: 0.5em;
+    &:first-child {
+      margin-top: 0;
+    }
+
+    label {
+      @include row-cell($fieldSpan);
+      text-align: right;
+      line-height: 1.75em;
+    }
+    input { 
+      box-sizing: border-box;
+      @include row-cell($inputSpan);
+    }
+
+    &.action {
+      input, button {
+        @include row-cell($inputSpan);
+        @include row-push($fieldSpan);
+      }
+    }
+  }
+}
+
+@import 'page/login';
+
+.grid-overlay-section {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 99999;
+
+  .grid-overlay-container {
+    @include row();
+    margin: 0 auto;
+    height: 100%;
+
+    div {
+      @include row-cell(1);
+      color: white;
+      background-color: rgba(0, 255, 0, 0.05);
+      height: 100%;
+    }
+  }
+}

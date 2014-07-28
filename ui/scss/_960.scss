@@ -1,0 +1,104 @@
+$totalWidth: 960px;
+$gutterMargin: 10px;
+$columns: 12;
+$columnWidth: ($totalWidth - ($columns * $gutterMargin * 2)) / $columns;
+
+body {
+  min-width: $totalWidth;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: '.';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin row() {
+  margin-left: auto;
+  margin-right: auto;
+  width: $totalWidth;
+
+  @include clearfix();
+}
+
+@mixin cell-width($span, $extraGutter: false) {
+  $width: 0;
+
+  @if $span >= $columns {
+    $width: $totalWidth - (2 * $gutterMargin);
+  } @else if $span <= 1 {
+    $width: $columnWidth;
+  } @else {
+    $width: ($columnWidth * $span) + (2 * $gutterMargin * ($span - 1));
+  }
+
+  @if ($extraGutter) {
+    width: $width + (2 * $gutterMargin);
+  } @else {
+    width: $width;
+  }
+}
+
+@mixin row-cell($span) {
+  display: inline;
+  float: left;
+  margin-left: $gutterMargin;
+  margin-right: $gutterMargin;
+
+  @include cell-width($span);
+}
+
+@mixin row-prefix($span) {
+  padding-left: ($columnWidth + ($gutterMargin * 2)) * $span;
+}
+
+@mixin row-suffix($span) {
+  padding-right: ($columnWidth + ($gutterMargin * 2)) * $span;
+}
+
+@mixin row-push($span) {
+  position: relative;
+  left: ($columnWidth + ($gutterMargin * 2)) * $span;
+}
+
+@mixin row-pull($span) {
+  position: relative;
+  right: - ($columnWidth + ($gutterMargin * 2)) * $span;
+}
+
+@mixin alpha() {
+  margin-left: 0;
+}
+
+@mixin omega() {
+  margin-right: 0;
+}
+
+@mixin clear() {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.row {
+  @include row();
+}
+
+.row-cell {
+  @include row-cell(1);
+}
