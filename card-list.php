@@ -4,6 +4,16 @@
 ?>
 
 <script type="text/javascript" src="ui/js/view-model/card-list-create-form.js"></script>
+
+<script id="existing-card-numbers" type="application/json"><?
+  $userCards = getUserCardsForUser($user);
+  $cardNumbers = array();
+  foreach ($userCards as $userCard) {
+    array_push($cardNumbers, $userCard['cardNumber']);
+  }
+  sort($cardNumbers);
+  echo json_encode($cardNumbers);
+?></script>
 <script type="text/javascript" src="ui/js/page/card-list-page.js"></script>
 
 <header id="logged-in">
@@ -15,41 +25,30 @@
   <? include('resource/user-header.php'); ?>
 </header>
 
-<div id="card-list-page">
-  <section>
-    <h1>New estimation</h1>
-
+<main id="card-list-page">
+  <header class="container">
+    <h1>Actuary</h1>
+  </header>
+  <section class="container">
     <form id="card-list-create-form" action="estimation-form.php" method="GET">
-      <input type="hidden" name="user" value="<? echo $userName ?>"/>
       <fieldset>
-        <label>Card number</label>
-        <input type="text" name="cardNumber" autocomplete="off"
-            data-bind="value: cardNumber, valueUpdate: 'afterkeydown'"/>
+        <div class="container">
+          <label for="card-number">Card number</label>
+        </div>
+        <div>
+          <input id="card-number" type="text" name="cardNumber" autocomplete="off"
+              data-bind="value: cardNumber,
+                         valueUpdate: 'afterkeydown',
+                         autocomplete: existingCardNumbers"/>
+        </div>
+        <div class="action">
+          <button data-bind="enable: isValidCardNumber">Estimate</button>
+          <a href="#" data-bind="click: resetCardNumber">Clear</a>
+        </div>
       </fieldset>
-      <fieldset class="action">
-        <button class="split" data-bind="enable: isValidCardNumber">Create</button>
-        <a class="split" href="#" data-bind="click: resetCardNumber">Clear</a>
-      </fieldset>
+      <input type="hidden" name="user" value="<? echo $userName ?>"/>
     </form>
-
   </section>
-
-  <?
-  $userCards = getUserCardsForUser($user);
-  if (sizeof($userCards) > 0) {?>
-
-  <section id="previous-cards">
-    <h1>Previous cards</h1>
-    <ul>
-      <? foreach ($userCards as $userCard) { ?>
-      <li><a href="./estimation-form.php?user=<? echo $userName; ?>&amp;cardNumber=<? echo $userCard['cardNumber']; ?>">
-        <? echo $userCard['cardNumber']; ?>
-      </a></li>
-      <? } ?>
-    </ul>
-  </section>
-  <?}?>
-
-</div>
+</main>
 
 <?php include('resource/footer.php'); ?>

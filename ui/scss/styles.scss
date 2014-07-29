@@ -17,7 +17,7 @@ a {
   &:active { color: rgb(236, 65, 52); }
 }
 
-section, header {
+header, .container {
   @include row();
 
   h1, h2, h3, h4, h5, h6 {
@@ -26,60 +26,47 @@ section, header {
 }
 
 form {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-
-  input:not([type]),
-  input[type='text'] {
-    border: 1px solid #434443;
-    border-radius: 2px;
-    padding: { left: 0.25em; right: 0.25em; }
-  }
 
   fieldset {
-    $fieldSpan: 3;
-    $inputSpan: 4;
-
-    @include row();
-
     margin-top: 0.5em;
     &:first-child {
       margin-top: 0;
     }
 
     label {
-      @include row-cell($fieldSpan);
-      text-align: right;
+      @include row-cell(4);
       line-height: 1.75em;
     }
-    input {
-      box-sizing: border-box;
-      @include row-cell($inputSpan);
-    }
 
-    &.action {
-      input, button, a {
-        @include row-cell($inputSpan);
-        @include row-push($fieldSpan);
-        line-height: 1.5;
-        &.split {
-          @include row-cell($inputSpan / 2);
-        }
-      }
-      button {
-        border-radius: 2px;
-        border: 1px solid #a2a2a2;
-        background: -webkit-linear-gradient(#f7f7f7, #dddddd); /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(#f7f7f7, #dddddd); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(#f7f7f7, #dddddd); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(#f7f7f7, #dddddd); /* Standard syntax */
-        margin: { top: 0; bottom: 0; }
-        padding: { top: 0; bottom: 0; }
-      }
-      a {
-        text-align: center;
-        padding: { top: 1px; bottom: 1px }
-      }
+    input:not([type]),
+    input[type='text'],
+    input[type='password'] {
+      @include row-cell(4);
+      box-sizing: border-box;
+      border: 1px solid #434443;
+      border-radius: 2px;
+      padding: { left: 0.25em; right: 0.25em; }
+    }
+  }
+
+  .action {
+    input, button, a {
+      @include row-cell(2);
+      line-height: 1.5;
+    }
+    button {
+      border-radius: 2px;
+      border: 1px solid #a2a2a2;
+      background: -webkit-linear-gradient(#f7f7f7, #dddddd); /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(#f7f7f7, #dddddd); /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(#f7f7f7, #dddddd); /* For Firefox 3.6 to 15 */
+      background: linear-gradient(#f7f7f7, #dddddd); /* Standard syntax */
+      margin: { top: 0; bottom: 0; }
+      padding: { top: 0; bottom: 0; }
+    }
+    a {
+      text-align: center;
+      padding: { top: 1px; bottom: 1px }
     }
   }
 }
@@ -111,6 +98,7 @@ header#logged-in {
   }
 }
 
+@import 'custom-binding/autocomplete';
 @import 'page/login';
 @import 'page/card-list';
 
@@ -118,7 +106,7 @@ header#logged-in {
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 99999;
+  z-index: -99999;
 
   .grid-overlay-container {
     @include row();

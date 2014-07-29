@@ -1,3 +1,4 @@
 window.actuary = {
-  vm  : {}
+  vm    : {},
+  page  : {}
 };

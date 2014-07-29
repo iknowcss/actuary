@@ -32,8 +32,10 @@
   <script type="text/javascript" src="ui/js/vendor/underscore.js"></script>
   <script type="text/javascript" src="ui/js/app.js"></script>
   <script type="text/javascript" src="ui/js/util/util.js"></script>
+  <script type="text/javascript" src="ui/js/extender/card-number.js"></script>
   <script type="text/javascript" src="ui/js/custom-binding/effort-rating.js"></script>
   <script type="text/javascript" src="ui/js/custom-binding/effort-note.js"></script>
+  <script type="text/javascript" src="ui/js/custom-binding/autocomplete.js"></script>
 </head>
 <body>
 

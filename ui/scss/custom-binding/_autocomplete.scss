@@ -1,0 +1,31 @@
+ul.input-autocomplete {
+  -webkit-transition: opacity 200ms; /* Safari and Chrome */
+     -moz-transition: opacity 200ms; /* Firefox */
+      -ms-transition: opacity 200ms; /* Internet Explorer */
+       -o-transition: opacity 200ms; /* Opera */
+          transition: opacity 200ms;
+
+  display: block;
+  top: -10000px;
+  opacity: 0;
+  &.active {
+    top: auto;
+    opacity: 1;
+  }
+
+  box-sizing: border-box;
+  border: 1px solid black;
+  position: absolute;
+  li {
+    cursor: pointer;
+    line-height: 1.5em;
+    padding: { left: 0.25em; right: 0.25em; }
+    &.highlighted {
+      background-color: #1788c3;
+      color: white;
+    }
+    &.filtered {
+      display: none;
+    }
+  }
+}

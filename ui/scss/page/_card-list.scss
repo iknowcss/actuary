@@ -1,18 +1,27 @@
 #card-list-page {
-  form#card-list-create-form {
-    label, input {
-      @include row-push(1);
-    }
-    button, a {
-      @include row-push(4);
+
+  header {
+    h1 {
+      text-align: center;
     }
   }
 
-  section#previous-cards {
-    ul {
+  #card-list-create-form {
+    @include row-push(3);
+
+    #card-number {
       @include row-cell(3);
-      @include row-push(1);
-      list-style: disc;
+    }
+
+    .action {
+      button {
+        // @include row-push(1);
+        @include row-cell(2);
+      }
+      a {
+        // @include row-push(1);
+        @include row-cell(1);
+      }
     }
   }
 }

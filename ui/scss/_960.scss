@@ -1,7 +1,7 @@
 $totalWidth: 960px;
 $gutterMargin: 10px;
-$columns: 12;
-$columnWidth: ($totalWidth - ($columns * $gutterMargin * 2)) / $columns;
+$maxCells: 12;
+$columnWidth: ($totalWidth - ($maxCells * $gutterMargin * 2)) / $maxCells;
 
 body {
   min-width: $totalWidth;
@@ -25,7 +25,7 @@ body {
   }
 }
 
-@mixin row() {
+@mixin row($cells: $maxCells) {
   margin-left: auto;
   margin-right: auto;
   width: $totalWidth;
@@ -36,7 +36,7 @@ body {
 @mixin cell-width($span, $extraGutter: false) {
   $width: 0;
 
-  @if $span >= $columns {
+  @if $span >= $maxCells {
     $width: $totalWidth - (2 * $gutterMargin);
   } @else if $span <= 1 {
     $width: $columnWidth;

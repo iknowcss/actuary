@@ -1,18 +1,12 @@
 #login-page {
+  background-color: #ebebeb;
+  width: 100%;
   padding: {
-    top: 2em;
+    top: 1.5em;
     bottom: 2em;
   }
-  width: 100%;
-
-  background-color: #ebebeb;
 
   #login-form {
-    label, input {
-      @include row-push(1);
-    }
-    button {
-      @include row-push(4);
-    }
+    @include row-push(4);
   } 
 }

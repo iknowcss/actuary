@@ -7,21 +7,25 @@
   <h1>JIRA Estimation App</h1>
 </header>
 
-<div id="login-page">
+<main id="login-page">
 
   <section>
     <form id="login-form" action="card-list.php" method="GET">
       <fieldset>
-        <label for="user">User name</label>
-        <input id="user" type="text" name="user" data-bind="value: user, valueUpdate: 'afterkeydown'"/>
+        <div class="container">
+          <label for="user">User name</label>
+        </div>
+        <div class="container">
+          <input id="user" type="text" name="user" data-bind="value: user, valueUpdate: 'afterkeydown'"/>
+        </div>
       </fieldset>
-      <fieldset class="action">
+      <fieldset class="action container">
         <button data-bind="enable: isValidUser">Log-in</button>
       </fieldset>
     </form>
   </section>
 
-</div>
+</main>
 
 
 <?php include('resource/footer.php'); ?>
