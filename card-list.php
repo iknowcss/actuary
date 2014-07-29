@@ -16,7 +16,7 @@
 ?></script>
 <script type="text/javascript" src="ui/js/page/card-list-page.js"></script>
 
-<header id="logged-in">
+<header id="logged-in" class="container">
   <nav class="left">
     <ul>
       <li><a href="./card-list.php?user=<? echo $userName; ?>">Actuary</a></li>
@@ -29,21 +29,21 @@
   <header class="container">
     <h1>Actuary</h1>
   </header>
-  <section class="container">
+  <section>
     <form id="card-list-create-form" action="estimation-form.php" method="GET">
       <fieldset>
         <div class="container">
           <label for="card-number">Card number</label>
         </div>
-        <div>
+        <div class="container">
           <input id="card-number" type="text" name="cardNumber" autocomplete="off"
               data-bind="value: cardNumber,
                          valueUpdate: 'afterkeydown',
                          autocomplete: existingCardNumbers"/>
-        </div>
-        <div class="action">
-          <button data-bind="enable: isValidCardNumber">Estimate</button>
-          <a href="#" data-bind="click: resetCardNumber">Clear</a>
+          <div class="action">
+            <button data-bind="enable: isValidCardNumber">Estimate</button>
+            <a href="#" data-bind="click: resetCardNumber">Clear</a>
+          </div>
         </div>
       </fieldset>
       <input type="hidden" name="user" value="<? echo $userName ?>"/>

@@ -7,21 +7,23 @@
   }
 
   #card-list-create-form {
-    @include row-push(3);
 
-    #card-number {
+    #card-number,
+    label[for="card-number"] {
+      @include row-push(3);
       @include row-cell(3);
     }
 
     .action {
       button {
-        // @include row-push(1);
+        @include row-push(3);
         @include row-cell(2);
       }
       a {
-        // @include row-push(1);
+        @include row-push(3);
         @include row-cell(1);
       }
     }
+
   }
 }

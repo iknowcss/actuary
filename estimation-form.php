@@ -21,7 +21,7 @@
   <nav class="left">
     <ul>
       <li><a href="./card-list.php?user=<? echo $userName; ?>">Actuary</a></li>
-      <li><? echo $cardNumber; ?></li>
+      <li><a href="./estimation-form.php?cardNumber=<? echo $cardNumber; ?>&amp;user=<? echo $userName; ?>"><? echo $cardNumber; ?></a></li>
     </ul>
   </nav>
   <? include('resource/user-header.php'); ?>

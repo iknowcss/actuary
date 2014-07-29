@@ -5,6 +5,8 @@
         vm,
         form;
 
+    document.getElementById('card-number').focus();
+
     existingCardNumbers = document.getElementById('existing-card-numbers');
     existingCardNumbers = JSON.parse(existingCardNumbers.innerHTML);
 

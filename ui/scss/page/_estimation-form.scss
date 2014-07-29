@@ -15,7 +15,20 @@
 
   #estimation-form {
     header {
-      h2 { @include row-cell(12); }
+      h2 {
+        @include row-cell(12);
+        &:before {
+          content: '\00BB';
+          position: absolute;
+          margin-left: -0.8em;
+        }
+        // position: relative;
+        // &:after {
+        //   content: '\00AB';
+        //   position: absolute;
+        //   right: 0;
+        // }
+      }
       h3 {
         font-weight: bold;
         &.estimate-type-header {

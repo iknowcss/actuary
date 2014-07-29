@@ -3,8 +3,8 @@
 <script type="text/javascript" src="ui/js/view-model/login-form.js"></script>
 <script type="text/javascript" src="ui/js/page/login-page.js"></script>
 
-<header id="logged-out">
-  <h1>JIRA Estimation App</h1>
+<header id="logged-out" class="container">
+  <h1>Actuary</h1>
 </header>
 
 <main id="login-page">

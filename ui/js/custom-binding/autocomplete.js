@@ -93,7 +93,13 @@
 
       element.addEventListener('focus', open);
       element.addEventListener('blur', close);
-      element.addEventListener('keydown', highlight);
+      element.addEventListener('keydown', function (e) {
+        if (!ul.classList.contains('active')) {
+          open();
+        } else {
+          highlight(e);
+        }
+      });
       allBindingsAccessor().value.subscribe(filterList);
 
       element.insertAdjacentHTML('afterend', '<ul class="input-autocomplete"></ul>');
