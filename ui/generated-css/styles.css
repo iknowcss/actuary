@@ -1,0 +1,608 @@
+* {
+  font: 24px open-sans, helvetica, sans-serif;
+  -webkit-tap-highlight-color: transparent; }
+
+/* `XHTML, HTML4, HTML5 Reset
+----------------------------------------------------------------------------------------------------*/
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+dialog,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+font,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+main,
+mark,
+menu,
+meter,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+progress,
+q,
+rp,
+rt,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video,
+xmp {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font: 24px open-sans, helvetica, sans-serif; }
+
+html,
+body {
+  height: 100%; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  /*
+    Override the default (display: inline) for
+    browsers that do not recognize HTML5 tags.
+  
+    IE8 (and lower) requires a shiv:
+    http://ejohn.org/blog/html5-shiv
+  */
+  display: block; }
+
+b,
+strong {
+  /*
+    Makes browsers agree.
+    IE + Opera = font-weight: bold.
+    Gecko + WebKit = font-weight: bolder.
+  */
+  font-weight: bold; }
+
+img {
+  color: transparent;
+  font-size: 0;
+  vertical-align: middle;
+  /*
+    For IE.
+    http://css-tricks.com/ie-fix-bicubic-scaling-for-images
+  */
+  -ms-interpolation-mode: bicubic; }
+
+ol,
+ul {
+  list-style: none; }
+
+li {
+  /*
+    For IE6 + IE7:
+  
+    "display: list-item" keeps bullets from
+    disappearing if hasLayout is triggered.
+  */
+  display: list-item; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+th,
+td,
+caption {
+  font-weight: normal;
+  vertical-align: top;
+  text-align: left; }
+
+q {
+  quotes: none; }
+
+q:before,
+q:after {
+  content: "";
+  content: none; }
+
+sub,
+sup,
+small {
+  font-size: 75%; }
+
+sub,
+sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sub {
+  bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
+
+svg {
+  /*
+    For IE9. Without, occasionally draws shapes
+    outside the boundaries of <svg> rectangle.
+  */
+  overflow: hidden; }
+
+body {
+  min-width: 960px; }
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px; }
+  .row:before, .row:after {
+    content: '.';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0; }
+  .row:after {
+    clear: both; }
+
+.row-cell {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 60px; }
+
+h1 {
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1em; }
+
+h1, h2, h3, h4, h5, h6 {
+  padding-top: 0.75em;
+  padding-bottom: 0.25em; }
+
+a {
+  color: #0099cd;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+  a:active {
+    color: #ec4134; }
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px; }
+  .container:before, .container:after {
+    content: '.';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0; }
+  .container:after {
+    clear: both; }
+
+form fieldset {
+  margin-top: 0.5em; }
+  form fieldset:first-child {
+    margin-top: 0; }
+  form fieldset label {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 300px;
+    line-height: 1.75em; }
+  form fieldset input:not([type]),
+  form fieldset input[type='text'],
+  form fieldset input[type='password'] {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 300px;
+    box-sizing: border-box;
+    border: 1px solid #434443;
+    border-radius: 2px;
+    padding-left: 0.25em;
+    padding-right: 0.25em; }
+form .action input, form .action button, form .action a {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 140px;
+  line-height: 1.5; }
+form .action button {
+  border-radius: 2px;
+  border: 1px solid #a2a2a2;
+  background: -webkit-linear-gradient(#f7f7f7, #dddddd);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#f7f7f7, #dddddd);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#f7f7f7, #dddddd);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#f7f7f7, #dddddd);
+  /* Standard syntax */
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0; }
+form .action a {
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px; }
+
+header#logged-in {
+  padding-top: 1em; }
+  header#logged-in nav.left {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 460px; }
+    header#logged-in nav.left > ul > li {
+      float: left; }
+      header#logged-in nav.left > ul > li:first-child:before {
+        content: '';
+        margin: 0; }
+      header#logged-in nav.left > ul > li:before {
+        font-size: 0.7em;
+        content: '>';
+        margin: 0.3em 0.5em;
+        display: block;
+        float: left; }
+  header#logged-in nav.right {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 460px;
+    text-align: right; }
+  header#logged-in #logout {
+    margin-left: 0.5em; }
+
+ul.input-autocomplete {
+  -webkit-transition: opacity 200ms;
+  /* Safari and Chrome */
+  -moz-transition: opacity 200ms;
+  /* Firefox */
+  -ms-transition: opacity 200ms;
+  /* Internet Explorer */
+  -o-transition: opacity 200ms;
+  /* Opera */
+  transition: opacity 200ms;
+  box-sizing: border-box;
+  border: 1px solid black;
+  position: absolute; }
+  ul.input-autocomplete.active {
+    top: auto;
+    opacity: 1; }
+  ul.input-autocomplete, ul.input-autocomplete.empty {
+    display: block;
+    top: -10000px;
+    opacity: 0; }
+  ul.input-autocomplete li {
+    cursor: pointer;
+    line-height: 1.5em;
+    padding-left: 0.25em;
+    padding-right: 0.25em; }
+    ul.input-autocomplete li.highlighted {
+      background-color: #1788c3;
+      color: white; }
+    ul.input-autocomplete li.filtered {
+      display: none; }
+
+/* Effort rating component */
+.effort-rating button {
+  box-sizing: content-box;
+  font-family: fontello;
+  font-size: 24px;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  margin: -0.5em 0;
+  padding: 0.5em;
+  outline: 0; }
+
+.effort-rating button:before {
+  width: 1.1em;
+  height: 1.1em;
+  display: inline-block; }
+
+.effort-rating button.effort-clear:before {
+  content: '\e802'; }
+
+.effort-rating button.effort-clear:hover:before {
+  color: #ec4134; }
+
+.effort-rating button.effort-bubble:before {
+  content: '\e800'; }
+
+.effort-rating button.effort-bubble.active:before {
+  content: '\e801';
+  top: -0.15em; }
+
+.effort-rating.rating-1 button.effort-bubble.active:before {
+  color: #0099cd; }
+
+.effort-rating.rating-2 button.effort-bubble.active:before {
+  color: #fb9600; }
+
+.effort-rating.rating-3 button.effort-bubble.active:before {
+  color: #ec4134; }
+
+.effort-note textarea,
+.effort-note div {
+  line-height: 1.25;
+  padding: 0;
+  margin: 0;
+  width: 100%; }
+
+.effort-note div {
+  white-space: pre-wrap; }
+
+.effort-note textarea {
+  border: none;
+  background-color: transparent;
+  display: none;
+  font-size: inherit;
+  font-family: inherit;
+  height: 3.75em; }
+
+.effort-note.active textarea {
+  display: block; }
+
+.effort-note.active div {
+  display: none; }
+
+header#logged-out h1 {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px; }
+
+#login-page {
+  background-color: #ebebeb;
+  width: 100%;
+  padding-top: 1.5em;
+  padding-bottom: 2em; }
+  #login-page #login-form label, #login-page #login-form input, #login-page #login-form button {
+    position: relative;
+    left: 320px; }
+  #login-page #login-form .action button {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 300px; }
+
+#card-list-page header h1 {
+  text-align: center; }
+#card-list-page #card-list-create-form #card-number,
+#card-list-page #card-list-create-form label[for="card-number"] {
+  position: relative;
+  left: 240px;
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px; }
+#card-list-page #card-list-create-form .action button {
+  position: relative;
+  left: 240px;
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 140px; }
+#card-list-page #card-list-create-form .action a {
+  position: relative;
+  left: 240px;
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 60px; }
+
+#estimation-form-page header h1 {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 300px;
+  position: relative;
+  left: 320px; }
+#estimation-form-page .global-estimate-total-row .estimate-title,
+#estimation-form-page .global-estimate-total-row .estimate-total {
+  position: relative;
+  left: 320px; }
+#estimation-form-page .global-estimate-total-row .estimate-title {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px; }
+#estimation-form-page .global-estimate-total-row .estimate-total {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 60px; }
+#estimation-form-page #estimation-form header h2 {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px; }
+  #estimation-form-page #estimation-form header h2:before {
+    content: '\00BB';
+    position: absolute;
+    margin-left: -0.8em; }
+#estimation-form-page #estimation-form header h3 {
+  font-weight: bold; }
+  #estimation-form-page #estimation-form header h3.estimate-type-header {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 460px; }
+  #estimation-form-page #estimation-form header h3.estimate-note-header {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 460px; }
+#estimation-form-page #estimation-form .estimate-item-row .estimate-title,
+#estimation-form-page #estimation-form .estimate-item-row .estimate-effort,
+#estimation-form-page #estimation-form .estimate-item-row .estimate-note,
+#estimation-form-page #estimation-form .estimate-total-row .estimate-title,
+#estimation-form-page #estimation-form .estimate-total-row .estimate-effort,
+#estimation-form-page #estimation-form .estimate-total-row .estimate-note {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em; }
+#estimation-form-page #estimation-form .estimate-item-row .estimate-title,
+#estimation-form-page #estimation-form .estimate-total-row .estimate-title {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px; }
+#estimation-form-page #estimation-form .estimate-item-row .estimate-effort,
+#estimation-form-page #estimation-form .estimate-total-row .estimate-effort {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px; }
+#estimation-form-page #estimation-form .estimate-item-row .estimate-note,
+#estimation-form-page #estimation-form .estimate-total-row .estimate-note {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 460px; }
+#estimation-form-page #estimation-form .estimate-item-row:nth-child(2n+1) {
+  background-color: #ebebeb; }
+#estimation-form-page #estimation-form .estimate-total-row .estimate-title,
+#estimation-form-page #estimation-form .estimate-total-row .estimate-effort,
+#estimation-form-page #estimation-form .estimate-total-row .estimate-note {
+  border-top: 1px solid black; }
+#estimation-form-page #estimation-form .estimate-total-row .estimate-effort {
+  text-align: right; }
+
+.grid-overlay-section {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -99999; }
+  .grid-overlay-section .grid-overlay-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+    margin: 0 auto;
+    height: 100%; }
+    .grid-overlay-section .grid-overlay-container:before, .grid-overlay-section .grid-overlay-container:after {
+      content: '.';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      font-size: 0;
+      line-height: 0;
+      width: 0;
+      height: 0; }
+    .grid-overlay-section .grid-overlay-container:after {
+      clear: both; }
+    .grid-overlay-section .grid-overlay-container div {
+      display: inline;
+      float: left;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 60px;
+      color: white;
+      background-color: rgba(0, 255, 0, 0.05);
+      height: 100%; }

@@ -23,7 +23,7 @@
 <head>
   <link type="text/css" href="ui/font/open-sans/font.css" rel="stylesheet"/>
   <link type="text/css" href="ui/font/fontello/css/fontello.css" rel="stylesheet"/>
-  <link type="text/css" href="ui/scss/styles.css" rel="stylesheet"/>
+  <link type="text/css" href="ui/generated-css/styles.css" rel="stylesheet"/>
   
   <script type="text/javascript" src="ui/js/vendor/Tocca.min.js"></script>
   <script type="text/javascript">var JUST_ON_TOUCH_DEVICES = true;</script>
