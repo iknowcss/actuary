@@ -35,11 +35,13 @@
   <section class="container global-estimate-total-row">
     <span class="estimate-title">Estimate</span>
     <span class="estimate-total" data-bind="text: storyPoints.initPoints"></span>
+    <span class="estimate-raw-total" data-bind="text: storyPoints.initRawPoints"></span>
   </section>
 
   <section class="container global-estimate-total-row">
     <span class="estimate-title">Actual effort</span>
     <span class="estimate-total" data-bind="text: storyPoints.postPoints"></span>
+    <span class="estimate-raw-total" data-bind="text: storyPoints.postRawPoints"></span>
   </section>
 
   <form id="estimation-form">

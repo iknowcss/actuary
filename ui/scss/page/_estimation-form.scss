@@ -6,11 +6,27 @@
 
   .global-estimate-total-row {
     .estimate-title,
-    .estimate-total {
+    .estimate-total,
+    .estimate-raw-total {
       @include row-push(4);
     }
-    .estimate-title { @include row-cell(3); }
+
+    .estimate-title { @include row-cell(2); }
     .estimate-total { @include row-cell(1); }
+    .estimate-raw-total { @include row-cell(1); }
+
+    .estimate-total,
+    .estimate-raw-total {
+      text-align: right;
+    }
+
+    .estimate-raw-total {
+      visibility: hidden;
+      color: #9b9b9b;
+    }
+    .estimate-total:hover + .estimate-raw-total {
+      visibility: visible;
+    }
   }
 
   #estimation-form {
@@ -20,14 +36,8 @@
         &:before {
           content: '\00BB';
           position: absolute;
-          margin-left: -0.8em;
+          margin-left: -1em;
         }
-        // position: relative;
-        // &:after {
-        //   content: '\00AB';
-        //   position: absolute;
-        //   right: 0;
-        // }
       }
       h3 {
         font-weight: bold;
@@ -59,6 +69,7 @@
     }
 
     .estimate-total-row {
+      margin-top: 0.25em;
       .estimate-title,
       .estimate-effort,
       .estimate-note {

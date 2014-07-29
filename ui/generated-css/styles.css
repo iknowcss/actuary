@@ -498,7 +498,8 @@ header#logged-out h1 {
   position: relative;
   left: 320px; }
 #estimation-form-page .global-estimate-total-row .estimate-title,
-#estimation-form-page .global-estimate-total-row .estimate-total {
+#estimation-form-page .global-estimate-total-row .estimate-total,
+#estimation-form-page .global-estimate-total-row .estimate-raw-total {
   position: relative;
   left: 320px; }
 #estimation-form-page .global-estimate-total-row .estimate-title {
@@ -506,13 +507,27 @@ header#logged-out h1 {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 220px; }
+  width: 140px; }
 #estimation-form-page .global-estimate-total-row .estimate-total {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 60px; }
+#estimation-form-page .global-estimate-total-row .estimate-raw-total {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 60px; }
+#estimation-form-page .global-estimate-total-row .estimate-total,
+#estimation-form-page .global-estimate-total-row .estimate-raw-total {
+  text-align: right; }
+#estimation-form-page .global-estimate-total-row .estimate-raw-total {
+  visibility: hidden;
+  color: #9b9b9b; }
+#estimation-form-page .global-estimate-total-row .estimate-total:hover + .estimate-raw-total {
+  visibility: visible; }
 #estimation-form-page #estimation-form header h2 {
   display: inline;
   float: left;
@@ -522,7 +537,7 @@ header#logged-out h1 {
   #estimation-form-page #estimation-form header h2:before {
     content: '\00BB';
     position: absolute;
-    margin-left: -0.8em; }
+    margin-left: -1em; }
 #estimation-form-page #estimation-form header h3 {
   font-weight: bold; }
   #estimation-form-page #estimation-form header h3.estimate-type-header {
@@ -568,12 +583,14 @@ header#logged-out h1 {
   width: 460px; }
 #estimation-form-page #estimation-form .estimate-item-row:nth-child(2n+1) {
   background-color: #ebebeb; }
-#estimation-form-page #estimation-form .estimate-total-row .estimate-title,
-#estimation-form-page #estimation-form .estimate-total-row .estimate-effort,
-#estimation-form-page #estimation-form .estimate-total-row .estimate-note {
-  border-top: 1px solid black; }
-#estimation-form-page #estimation-form .estimate-total-row .estimate-effort {
-  text-align: right; }
+#estimation-form-page #estimation-form .estimate-total-row {
+  margin-top: 0.25em; }
+  #estimation-form-page #estimation-form .estimate-total-row .estimate-title,
+  #estimation-form-page #estimation-form .estimate-total-row .estimate-effort,
+  #estimation-form-page #estimation-form .estimate-total-row .estimate-note {
+    border-top: 1px solid black; }
+  #estimation-form-page #estimation-form .estimate-total-row .estimate-effort {
+    text-align: right; }
 
 .grid-overlay-section {
   height: 100%;
