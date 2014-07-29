@@ -103,22 +103,6 @@ header#logged-in {
 @import 'page/card-list';
 @import 'page/estimation-form';
 
-.grid-overlay-section {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: -99999;
-
-  .grid-overlay-container {
-    @include row();
-    margin: 0 auto;
-    height: 100%;
-
-    div {
-      @include row-cell(1);
-      color: white;
-      background-color: rgba(0, 255, 0, 0.05);
-      height: 100%;
-    }
-  }
+body.grid {
+  background: url('../image/960-60-10.png') top center repeat-y;
 }
