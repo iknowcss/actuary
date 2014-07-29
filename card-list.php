@@ -1,5 +1,5 @@
 <?
-  include('resource/new-header.php');
+  include('resource/header.php');
   require_once "data-access/user-card.php";
 ?>
 
@@ -19,7 +19,7 @@
 <header id="logged-in">
   <nav class="left">
     <ul>
-      <li><a href="./card-list.php?user=<? echo $userName; ?>">Cards</a></li>
+      <li><a href="./card-list.php?user=<? echo $userName; ?>">Actuary</a></li>
     </ul>
   </nav>
   <? include('resource/user-header.php'); ?>

@@ -1,4 +1,4 @@
-<?php include('resource/new-header.php'); ?>
+<?php include('resource/header.php'); ?>
 
 <script type="text/javascript" src="ui/js/view-model/login-form.js"></script>
 <script type="text/javascript" src="ui/js/page/login-page.js"></script>

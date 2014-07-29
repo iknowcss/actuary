@@ -1,0 +1,28 @@
+.effort-note textarea,
+.effort-note div {
+  line-height: 1.25;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.effort-note div {
+  white-space: pre-wrap;
+}
+
+.effort-note textarea {
+  border: none;
+  background-color: transparent;
+  display: none;
+  font-size: inherit;
+  font-family: inherit;
+  height: 3.75em;
+}
+
+.effort-note.active textarea {
+  display: block;
+}
+
+.effort-note.active div {
+  display: none;
+}

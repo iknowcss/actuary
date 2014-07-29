@@ -7,6 +7,12 @@
   }
 
   #login-form {
-    @include row-push(4);
+    label, input, button {
+      @include row-push(4);
+    }
+
+    .action button {
+      @include row-cell(4);
+    }
   } 
 }

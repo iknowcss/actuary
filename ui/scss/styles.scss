@@ -6,8 +6,7 @@ h2 { font-size: 1.5em; }
 h3 { font-size: 1em; }
 
 h1, h2, h3, h4, h5, h6 {
-  padding-top: 0.75em;
-  padding-bottom: 0.25em;
+  padding: { top: 0.75em; bottom: 0.25em };
 }
 
 a {
@@ -17,12 +16,8 @@ a {
   &:active { color: rgb(236, 65, 52); }
 }
 
-header, .container {
+.container {
   @include row();
-
-  h1, h2, h3, h4, h5, h6 {
-    @include row-cell(12);
-  }
 }
 
 form {
@@ -99,8 +94,11 @@ header#logged-in {
 }
 
 @import 'custom-binding/autocomplete';
+@import 'custom-binding/effort-rating';
+@import 'custom-binding/effort-note';
 @import 'page/login';
 @import 'page/card-list';
+@import 'page/estimation-form';
 
 .grid-overlay-section {
   height: 100%;

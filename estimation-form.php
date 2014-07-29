@@ -17,75 +17,76 @@
 <script type="text/javascript" src="ui/js/view-model/estimation-form.js"></script>
 <script type="text/javascript" src="ui/js/page/estimation-form-page.js"></script>
 
-<div class="container_12">
-  <div class="grid_6 header">
-    <a href="./card-list.php?user=<? echo $userName; ?>">Cards</a> &gt;
-    <span><? echo $cardNumber; ?></span>
-  </div>
-  <?php include('resource/user-header.php'); ?>
-</div>
+<header id="logged-in" class="container">
+  <nav class="left">
+    <ul>
+      <li><a href="./card-list.php?user=<? echo $userName; ?>">Actuary</a></li>
+      <li><? echo $cardNumber; ?></li>
+    </ul>
+  </nav>
+  <? include('resource/user-header.php'); ?>
+</header>
 
-<form id="estimation-form">
+<main id="estimation-form-page">
+  <header class="container">
+    <h1><? echo $cardNumber; ?></h1>
+  </header>
 
-  <div id="estimation-form-title">
-    <div class="container_12">
-      <h1 class="grid_6">
-        <a href="https://jira.ec2.local/browse/<? echo $cardNumber; ?>"
-            target="_blank">
-          <? echo $cardNumber; ?>
-        </a>
-      </h1>
-    </div>
-    <div class="container_12">
-      <div class="grid_6 estimation-totals">
-        <div class="clear"></div>
-        <div class="grid_4 alpha bold">Initial estimation</div>
-        <div class="grid_1 align-right" data-bind="text: storyPoints.initPoints"></div>
-        <div class="clear"></div>
-        <div class="grid_4 alpha bold">Post-implementation</div>
-        <div class="grid_1 align-right" data-bind="text: storyPoints.postPoints"></div>
+  <section class="container global-estimate-total-row">
+    <span class="estimate-title">Estimate</span>
+    <span class="estimate-total" data-bind="text: storyPoints.initPoints"></span>
+  </section>
+
+  <section class="container global-estimate-total-row">
+    <span class="estimate-title">Actual effort</span>
+    <span class="estimate-total" data-bind="text: storyPoints.postPoints"></span>
+  </section>
+
+  <form id="estimation-form">
+
+    <!-- ko foreach: groups -->
+    <section>
+      <header class="container">
+        <h2 data-bind="text: name"></h2>
+      </header>
+
+      <header class="container">
+        <h3 class="estimate-type-header" data-bind="visible: $parent.tab() == 'ESTIMATE'">Estimated difficulty</h3>
+        <h3 class="estimate-type-header" data-bind="visible: $parent.tab() == 'ACTUAL'">Actual difficulty</h3>
+        <h3 class="estimate-note-header">Notes</h3>
+      </header>
+
+      <div class="estimate-item-row-container" data-bind="foreach: items">
+
+        <div class="container estimate-item-row">
+          <div data-bind="visible: $parents[1].tab() == 'ESTIMATE'">
+            <div class="estimate-title" data-bind="text: name"></div>
+            <div class="estimate-effort" data-bind="effortRating: initRating"></div>
+          </div>
+          <div data-bind="visible: $parents[1].tab() == 'ACTUAL'">
+            <div class="estimate-title" data-bind="text: name"></div>
+            <div class="estimate-effort" data-bind="effortRating: postRating"></div>
+          </div>
+          <div class="estimate-note" data-bind="effortNote: note"></div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ko foreach: groups -->
-  <div class="container_12">
-    <h2 class="grid_12" data-bind="text: name"></h2>
-  </div>
-  <div class="container_12">
-    <h3 class="grid_5" data-bind="visible: $parent.tab() == 'ESTIMATE'">Estimated difficulty</h3>
-    <h3 class="grid_5" data-bind="visible: $parent.tab() == 'ACTUAL'">Actual difficulty</h3>
-    <h3 class="grid_4">Notes</h3>
-  </div>
-  <div class="item-row-container" data-bind="foreach: items">
-
-    <div class="container_12 item-row" >
-      <div data-bind="visible: $parents[1].tab() == 'ESTIMATE'">
-        <div class="grid_3" data-bind="text: name"></div>
-        <div class="grid_2" data-bind="effortRating: initRating"></div>
+      <div class="container estimate-total-row">
+        <div data-bind="visible: $parent.tab() == 'ESTIMATE'">
+          <div class="estimate-title"><b>Partial points:</b></div>
+          <div class="estimate-effort" data-bind="text: points.initRawPoints"></div>
+        </div>
+        <div data-bind="visible: $parent.tab() == 'ACTUAL'">
+          <div class="estimate-title"><b>Partial points:</b></div>
+          <div class="estimate-effort" data-bind="text: points.postRawPoints"></div>
+        </div>
+        <div class="estimate-note"></div>
       </div>
-      <div data-bind="visible: $parents[1].tab() == 'ACTUAL'">
-        <div class="grid_3" data-bind="text: name"></div>
-        <div class="grid_2" data-bind="effortRating: postRating"></div>
-      </div>
-      <div class="grid_7" data-bind="effortNote: note"></div>
-    </div>
+    </section>
+    <!-- /ko -->
 
-  </div>
+  </form>
 
-  <div class="container_12 total-row">
-    <div data-bind="visible: $parent.tab() == 'ESTIMATE'">
-      <div class="grid_3"><b>Partial points:</b></div>
-      <div class="grid_2 align-right" data-bind="text: points.initRawPoints"></div>
-    </div>
-    <div data-bind="visible: $parent.tab() == 'ACTUAL'">
-      <div class="grid_3"><b>Partial points:</b></div>
-      <div class="grid_2 align-right" data-bind="text: points.postRawPoints"></div>
-    </div>
-    <div class="grid_7"></div>
-  </div>
-  <!-- /ko -->
-
-</form>
+</main>
 
 <?php include('resource/footer.php'); ?>

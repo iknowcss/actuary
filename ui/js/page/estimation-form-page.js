@@ -41,7 +41,7 @@
     });
 
     // Apply view bindings
-    ko.applyBindings(estimationForm, document.getElementById('estimation-form'));
+    ko.applyBindings(estimationForm, document.getElementById('estimation-form-page'));
 
     // Subscribe to changes of the form
     // Note: subscribe after binding so that init does not trigger a save

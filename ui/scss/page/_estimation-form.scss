@@ -1,0 +1,59 @@
+#estimation-form-page {
+  header h1 {
+    @include row-cell(4);
+    @include row-push(4);
+  }
+
+  .global-estimate-total-row {
+    .estimate-title,
+    .estimate-total {
+      @include row-push(4);
+    }
+    .estimate-title { @include row-cell(3); }
+    .estimate-total { @include row-cell(1); }
+  }
+
+  #estimation-form {
+    header {
+      h2 { @include row-cell(12); }
+      h3 {
+        font-weight: bold;
+        &.estimate-type-header {
+          @include row-cell(6);
+        }
+        &.estimate-note-header {
+          @include row-cell(6);
+        }
+      }
+    }
+
+    .estimate-item-row,
+    .estimate-total-row {
+      .estimate-title,
+      .estimate-effort,
+      .estimate-note {
+        padding: { top: 0.5em; bottom: 0.5em; }
+      }
+      .estimate-title  { @include row-cell(3); }
+      .estimate-effort { @include row-cell(3); }
+      .estimate-note   { @include row-cell(6); }
+    }
+
+    .estimate-item-row {
+      &:nth-child(2n+1) {
+        background-color: #ebebeb;
+      }
+    }
+
+    .estimate-total-row {
+      .estimate-title,
+      .estimate-effort,
+      .estimate-note {
+        border-top: 1px solid black;
+      }
+      .estimate-effort {
+        text-align: right;
+      }
+    }
+  }
+}

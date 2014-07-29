@@ -14,10 +14,12 @@
 
       function filterList() {
         var value = ko.utils.unwrapObservable(allBindingsAccessor().value),
-            currentWasFiltered = false;
+            currentWasFiltered = false,
+            unfilteredCount = 0;
         lis.forEach(function (li) {
           if (li.innerText.indexOf(value) == 0) {
             li.classList.remove('filtered');
+            unfilteredCount++;
           } else {
             li.classList.add('filtered');
             if (li.innerText == currentItem) {
@@ -29,6 +31,11 @@
           if (!highlightNext(-1)) {
             highlightNext(1);
           }
+        }
+        if (unfilteredCount == 0) {
+          ul.classList.add('empty');
+        } else {
+          ul.classList.remove('empty');
         }
       }
 

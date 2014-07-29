@@ -5,12 +5,16 @@ ul.input-autocomplete {
        -o-transition: opacity 200ms; /* Opera */
           transition: opacity 200ms;
 
-  display: block;
-  top: -10000px;
-  opacity: 0;
   &.active {
     top: auto;
     opacity: 1;
+  }
+
+  &,
+  &.empty {
+    display: block;
+    top: -10000px;
+    opacity: 0;
   }
 
   box-sizing: border-box;
