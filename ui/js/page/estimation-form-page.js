@@ -17,6 +17,7 @@
       groups: userCardData.groups || [
         { name  : 'Front-end',
           items : [
+            { name  : 'JSP' },
             { name  : 'JavaScript' },
             { name  : 'CSS' } ] },
         { name  : 'Middle',
