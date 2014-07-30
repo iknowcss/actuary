@@ -26,6 +26,10 @@
   function JumpForm(cardNumbers, initCardNumber) {
     this.existingCardNumbers = cardNumbers;
     this.cardNumber = ko.observable(initCardNumber).extend({ cardNumber: true });
+
+    this.isValidCardNumber = ko.computed(function () {
+      return actuary.VALID_CARD_NUMBER_REGEX.test(this.cardNumber());
+    }, this);
   }
 
 }(window.ko, window.jQuery));

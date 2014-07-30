@@ -21,7 +21,9 @@
     <h1>What card will you estimate?</h1>
   </header>
   <section>
-    <form id="card-list-create-form" action="estimation-form.php" method="GET">
+    <form id="card-list-create-form" action="estimation-form.php" method="GET"
+        data-bind="submit: function () { return isValidCardNumber(); }">
+      <span data-bind="text: isValidCardNumber"></span>
       <fieldset>
         <div class="container">
           <label for="card-number">Card number</label>
@@ -32,7 +34,7 @@
                          valueUpdate: 'afterkeydown',
                          autocomplete: existingCardNumbers"/>
           <div class="action">
-            <button data-bind="enable: isValidCardNumber">Estimate</button>
+            <button type="submit" data-bind="enable: isValidCardNumber">Estimate</button>
             <a href="#" data-bind="click: resetCardNumber">Clear</a>
           </div>
         </div>

@@ -65,6 +65,7 @@ form {
     padding: { top: 0; bottom: 0; }
     line-height: 1.5;
     &:disabled {
+      cursor: default;
       border-color: #a2a2a2;
     }
   }

@@ -21,6 +21,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <title>Actuary</title>
+
   <link type="text/css" href="ui/font/open-sans/font.css" rel="stylesheet"/>
   <link type="text/css" href="ui/font/fontello/css/fontello.css" rel="stylesheet"/>
   <link type="text/css" href="ui/font/aspire/font.css" rel="stylesheet"/>

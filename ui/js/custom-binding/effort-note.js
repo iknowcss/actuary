@@ -24,12 +24,13 @@
         switch (e.which) {
           case 13:
             if (e.shiftKey) {
-              break;;
+              break;
             }
           case 9:
           case 27:
             element.classList.remove('active');
             e.preventDefault();
+            textarea.blur();
             break;
         }
       });

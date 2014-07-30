@@ -291,6 +291,7 @@ form button {
   padding-bottom: 0;
   line-height: 1.5; }
   form button:disabled {
+    cursor: default !important;
     border-color: #a2a2a2; }
 form fieldset {
   margin-top: 0.5em; }

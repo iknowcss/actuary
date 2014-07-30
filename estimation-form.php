@@ -9,25 +9,25 @@
     header('Location: ./login.php');
     exit();
   }
-
-  $userCard = getUserCardByCardNumber($user, $cardNumber);
 ?>
 
 <? include('resource/card-list-json.php'); ?>
-<script id="user-card-data" type="application/json"><? echo json_encode($userCard); ?></script>
+<script id="user-card-data" type="application/json"><? echo json_encode(getUserCardByCardNumber($user, $cardNumber)); ?></script>
 <script type="text/javascript" src="ui/js/view-model/estimation-form.js"></script>
 <script type="text/javascript" src="ui/js/page/estimation-form-page.js"></script>
 
 <header id="logged-in">
   <nav class="container">
     <a class="logo" href="./card-list.php?user=<? echo $userName; ?>">Actuary</a>
-    <form id="jump-form" method="GET">
+    <form id="jump-form" method="GET"
+        data-bind="submit: function () { return isValidCardNumber(); }">
       <input type="hidden" name="user" value="<? echo $userName; ?>"/>
       <input type="text" name="cardNumber" class="jump-input" autocomplete="off" value="<? echo $cardNumber; ?>" 
           data-bind="value: cardNumber,
                      valueUpdate: 'afterkeydown',
                      autocomplete: existingCardNumbers"/>
-      <button class="jump-button">Go</button>
+      <button class="jump-button"
+          data-bind="enable: isValidCardNumber">Go</button>
     </form>
     <? include('resource/user-header.php'); ?>
   </nav>

@@ -18,9 +18,12 @@
       form.submit();
     });
 
+    cardNumberInput.on('focus', function () {
+      tipBubble.removeClass('active');
+    });
+
     actuary.kb.setShortcut('J', function () {
       cardNumberInput.focus().val(cardNumberInput.val());
-      tipBubble.removeClass('active');
     });
 
     setTimeout(function () { tipBubble.addClass('active'); }, 250);
