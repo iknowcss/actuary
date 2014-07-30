@@ -40,6 +40,14 @@
       <input type="hidden" name="user" value="<? echo $userName ?>"/>
     </form>
   </section>
+  <section class="container">
+    <asside id="tip">
+      Type 
+      <span class="keyboard">Ctrl</span> + 
+      <span class="keyboard">J</span>
+      to jump<br/>to the card number input
+    </asside>
+  </section>
 </main>
 
 <?php include('resource/footer.php'); ?>

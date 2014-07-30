@@ -7,6 +7,7 @@
   }
 
   #card-list-create-form {
+    margin-bottom: 0.5em;
 
     #card-number,
     label[for="card-number"] {
@@ -24,6 +25,42 @@
         @include row-cell(1);
       }
     }
+  }
 
+  #tip {
+    @include row-cell(3);
+    @include row-push(3);
+    font-size: 16px;
+    background-color: $brand-color;
+    color: white;
+    box-sizing: border-box;
+    padding: 0.5em;
+    border-radius: 2px;
+
+    .keyboard {
+      font-family: courier;
+      font-size: 0.75em;
+      border: 1px solid white;
+      padding: 0.25em 0.5em 0em 0.5em;
+      border-radius: 2px;
+      position: relative;
+      bottom: 0.1em;
+    }
+
+    &:before {
+      $arrow-size: 1em;
+
+      font-size: 16px;
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0px;
+      height: 0px;
+      border: $arrow-size / 2 solid $brand-color;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-left-color: transparent;
+      margin-top: -0.5em - $arrow-size;
+    }
   }
 }

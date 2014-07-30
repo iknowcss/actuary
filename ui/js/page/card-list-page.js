@@ -16,7 +16,10 @@
     cardNumberInput.data('autocompleter').dropdownClicked.subscribe(function (cardNumber) {
       form.submit();
     });
-    cardNumberInput.focus();
+
+    actuary.kb.setShortcut('J', function () {
+      cardNumberInput.focus().val(cardNumberInput.val());
+    });
   });
 
 }(window.actuary, window.ko));

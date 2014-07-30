@@ -16,11 +16,8 @@
         jumpForm.submit();
       });
 
-      $(window).on('keydown', function (e) {
-        // Ctrl+J and Cmd+J
-        if ((e.ctrlKey || e.metaKey) && e.keyCode == 74) { 
-          cardNumberInput.focus().val(cardNumberInput.val());
-        }
+      actuary.kb.setShortcut('J', function () {
+        cardNumberInput.focus().val(cardNumberInput.val());
       });
     }
 

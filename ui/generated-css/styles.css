@@ -1,6 +1,6 @@
 * {
   font: 24px open-sans, helvetica, sans-serif;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 /* `XHTML, HTML4, HTML5 Reset
 ----------------------------------------------------------------------------------------------------*/
@@ -401,7 +401,8 @@ ul.input-autocomplete {
   transition: opacity 200ms;
   border: 1px solid black;
   position: absolute;
-  background-color: white; }
+  background-color: white;
+  z-index: 100; }
   ul.input-autocomplete.active {
     top: auto;
     opacity: 1; }
@@ -516,31 +517,67 @@ header#logged-out h1 {
 
 #card-list-page header h1 {
   text-align: center; }
-#card-list-page #card-list-create-form #card-number,
-#card-list-page #card-list-create-form label[for="card-number"] {
-  position: relative;
-  left: 240px;
+#card-list-page #card-list-create-form {
+  margin-bottom: 0.5em; }
+  #card-list-page #card-list-create-form #card-number,
+  #card-list-page #card-list-create-form label[for="card-number"] {
+    position: relative;
+    left: 240px;
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 220px; }
+  #card-list-page #card-list-create-form .action button {
+    position: relative;
+    left: 240px;
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 140px; }
+  #card-list-page #card-list-create-form .action a {
+    position: relative;
+    left: 240px;
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 60px; }
+#card-list-page #tip {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 220px; }
-#card-list-page #card-list-create-form .action button {
+  width: 220px;
   position: relative;
   left: 240px;
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 140px; }
-#card-list-page #card-list-create-form .action a {
-  position: relative;
-  left: 240px;
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 60px; }
+  font-size: 16px;
+  background-color: #1788c3;
+  color: white;
+  box-sizing: border-box;
+  padding: 0.5em;
+  border-radius: 2px; }
+  #card-list-page #tip .keyboard {
+    font-family: courier;
+    font-size: 0.75em;
+    border: 1px solid white;
+    padding: 0.25em 0.5em 0em 0.5em;
+    border-radius: 2px;
+    position: relative;
+    bottom: 0.1em; }
+  #card-list-page #tip:before {
+    font-size: 16px;
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border: 0.5em solid #1788c3;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    margin-top: -1.5em; }
 
 #estimation-form-page .global-estimate-total-row .estimate-title,
 #estimation-form-page .global-estimate-total-row .estimate-total,
