@@ -4,12 +4,12 @@
     .estimate-title,
     .estimate-total,
     .estimate-raw-total {
-      @include row-push(5);
+      @include row-push(1);
     }
 
 
     h1 {
-      @include row-cell(4);
+      @include row-cell(8);
       padding-top: 0 !important;
       a {
         font-size: inherit;

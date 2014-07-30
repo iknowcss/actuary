@@ -1,6 +1,7 @@
 header#logged-out {
   h1 {
     @include row-cell(4);
+    @include row-push(1);
     font-family: aspire;
     font-size: 80px;
     padding-top: 0;

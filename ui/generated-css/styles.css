@@ -494,6 +494,8 @@ header#logged-out h1 {
   margin-left: 10px;
   margin-right: 10px;
   width: 300px;
+  position: relative;
+  left: 80px;
   font-family: aspire;
   font-size: 80px;
   padding-top: 0; }
@@ -605,13 +607,13 @@ header#logged-out h1 {
 #estimation-form-page .global-estimate-total-row .estimate-total,
 #estimation-form-page .global-estimate-total-row .estimate-raw-total {
   position: relative;
-  left: 400px; }
+  left: 80px; }
 #estimation-form-page .global-estimate-total-row h1 {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 300px;
+  width: 620px;
   padding-top: 0 !important; }
   #estimation-form-page .global-estimate-total-row h1 a {
     font-size: inherit; }
