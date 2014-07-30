@@ -8,8 +8,7 @@
   function CardListCreateForm(existingCardNumbers) {
     var self = this;
 
-    self.cardNumber = ko.observable(DEFAULT_CARD_NUMBER)
-        .extend({ cardNumber: true });
+    self.cardNumber = ko.observable(DEFAULT_CARD_NUMBER).extend({ cardNumber: true });
     self.existingCardNumbers = existingCardNumbers;
 
     self.isValidCardNumber = ko.computed(function () {

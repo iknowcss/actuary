@@ -15,6 +15,9 @@
           valueBinding.subscribe(function (newValue) {
             autocompleter.filter(newValue);
           });
+          autocompleter.dropdownClicked.subscribe(function (item) {
+            valueBinding(item);
+          });
         }
         autocompleter.filter(ko.utils.unwrapObservable(valueBinding));
       }
@@ -33,6 +36,7 @@
     this.constructListBox();
 
     this.highlightedLi = ko.observable();
+    this.dropdownClicked = new ko.subscribable();
   }
 
   _.extend(Autocompleter.prototype, {
@@ -51,15 +55,21 @@
           self.highlight($(e.target));
         })
         .on('mousedown.autocompleter', 'li', function (e) {
-          alert($(e.target).text());
+          var target = $(e.target);
+          self.highlight(target);
+          self.setInputValToHighlightedItem();
+          self.dropdownClicked.notifySubscribers(target.data('autocompleter-item'));
         });
     },
 
     constructListBox: function () {
+      var inputMarginTop = this.input.css('margin-top').match(/^(-?\d+)px$/);
+      inputMarginTop = inputMarginTop ? parseInt(inputMarginTop[0], 10) : 0;
+
       this.ul = $('<ul class="input-autocomplete"></ul>').insertAfter(this.input);
       this.ul.css({
         'width'       : (this.input.outerWidth() - 2) + 'px',
-        'margin-top'  : (this.input.outerHeight() + 1) + 'px',
+        'margin-top'  : (this.input.outerHeight() + inputMarginTop - 1) + 'px',
         'margin-left' : (this.input.offset().left - this.ul.offset().left) + 'px'
       });
 

@@ -23,6 +23,7 @@
 <head>
   <link type="text/css" href="ui/font/open-sans/font.css" rel="stylesheet"/>
   <link type="text/css" href="ui/font/fontello/css/fontello.css" rel="stylesheet"/>
+  <link type="text/css" href="ui/font/aspire/font.css" rel="stylesheet"/>
   <link type="text/css" href="ui/generated-css/styles.css" rel="stylesheet"/>
   
   <script type="text/javascript" src="ui/js/vendor/Tocca.min.js"></script>
@@ -38,5 +39,6 @@
   <script type="text/javascript" src="ui/js/custom-binding/effort-rating.js"></script>
   <script type="text/javascript" src="ui/js/custom-binding/effort-note.js"></script>
   <script type="text/javascript" src="ui/js/custom-binding/autocomplete.js"></script>
+  <script type="text/javascript" src="ui/js/page/header.js"></script>
 </head>
 <body>

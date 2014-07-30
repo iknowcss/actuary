@@ -3,26 +3,17 @@
   require_once "data-access/user-card.php";
 ?>
 
+<? include('resource/card-list-json.php'); ?>
 <script type="text/javascript" src="ui/js/view-model/card-list-create-form.js"></script>
-
-<script id="existing-card-numbers" type="application/json"><?
-  $userCards = getUserCardsForUser($user);
-  $cardNumbers = array();
-  foreach ($userCards as $userCard) {
-    array_push($cardNumbers, $userCard['cardNumber']);
-  }
-  sort($cardNumbers);
-  echo json_encode($cardNumbers);
-?></script>
 <script type="text/javascript" src="ui/js/page/card-list-page.js"></script>
 
-<header id="logged-in" class="container">
-  <nav class="left">
-    <ul>
-      <li><a href="./card-list.php?user=<? echo $userName; ?>">Actuary</a></li>
-    </ul>
+<header id="logged-in">
+  <nav class="container">
+    <a class="logo" href="./card-list.php?user=<? echo $userName; ?>">Actuary</a>
+    <span type="text" class="jump-input"></span>
+    <span class="jump-button"></span>
+    <? include('resource/user-header.php'); ?>
   </nav>
-  <? include('resource/user-header.php'); ?>
 </header>
 
 <main id="card-list-page">

@@ -1,18 +1,23 @@
 header#logged-out {
   h1 {
     @include row-cell(12);
+    font-family: aspire;
+    font-size: 80px;
+    padding-top: 0;
+    text-align: center;
   }
 }
 
 #login-page {
-  background-color: #ebebeb;
+  background-color: $brand-color;
   width: 100%;
   padding: {
-    top: 1.5em;
-    bottom: 2em;
+    top: 0.5em;
+    bottom: 1em;
   }
 
   #login-form {
+    label { color: white; }
     label, input, button {
       @include row-push(4);
     }

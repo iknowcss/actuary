@@ -225,6 +225,9 @@ body {
   margin-right: 10px;
   width: 60px; }
 
+body {
+  margin-top: 75px; }
+
 h1 {
   font-size: 2em; }
 
@@ -262,6 +265,33 @@ a {
   .container:after {
     clear: both; }
 
+form input:not([type]),
+form input[type='text'],
+form input[type='password'] {
+  box-sizing: border-box;
+  border: 1px solid #434443;
+  border-radius: 2px;
+  padding-left: 0.25em;
+  padding-right: 0.25em; }
+form button {
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px solid black;
+  background: -webkit-linear-gradient(#f7f7f7, #dddddd);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#f7f7f7, #dddddd);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#f7f7f7, #dddddd);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#f7f7f7, #dddddd);
+  /* Standard syntax */
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1.5; }
+  form button:disabled {
+    border-color: #a2a2a2; }
 form fieldset {
   margin-top: 0.5em; }
   form fieldset:first-child {
@@ -280,65 +310,82 @@ form fieldset {
     float: left;
     margin-left: 10px;
     margin-right: 10px;
-    width: 300px;
-    box-sizing: border-box;
-    border: 1px solid #434443;
-    border-radius: 2px;
-    padding-left: 0.25em;
-    padding-right: 0.25em; }
+    width: 300px; }
 form .action input, form .action button, form .action a {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 140px;
-  line-height: 1.5; }
-form .action button {
-  border-radius: 2px;
-  border: 1px solid #a2a2a2;
-  background: -webkit-linear-gradient(#f7f7f7, #dddddd);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#f7f7f7, #dddddd);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#f7f7f7, #dddddd);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#f7f7f7, #dddddd);
-  /* Standard syntax */
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0; }
+  width: 140px; }
 form .action a {
   text-align: center;
   padding-top: 1px;
   padding-bottom: 1px; }
 
 header#logged-in {
-  padding-top: 1em; }
-  header#logged-in nav.left {
-    display: inline;
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 460px; }
-    header#logged-in nav.left > ul > li {
-      float: left; }
-      header#logged-in nav.left > ul > li:first-child:before {
-        content: '';
-        margin: 0; }
-      header#logged-in nav.left > ul > li:before {
-        font-size: 0.7em;
-        content: '>';
-        margin: 0.3em 0.5em;
-        display: block;
-        float: left; }
-  header#logged-in nav.right {
-    display: inline;
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 460px;
-    text-align: right; }
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+  background-color: #1788c3; }
+  header#logged-in nav {
+    margin: auto; }
+    header#logged-in nav a {
+      text-decoration: none;
+      color: white; }
+    header#logged-in nav .user-name,
+    header#logged-in nav .log-out,
+    header#logged-in nav .jump-label {
+      padding-top: 0.75em;
+      text-align: right;
+      font-size: 16px;
+      color: white; }
+    header#logged-in nav .logo {
+      display: inline;
+      float: left;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 140px;
+      line-height: 50px;
+      font-family: aspire;
+      font-size: 40px;
+      background-color: #1788c3;
+      text-align: left; }
+    header#logged-in nav .jump-input {
+      display: inline;
+      float: left;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 220px;
+      position: relative;
+      left: 160px;
+      margin-top: 0.25em; }
+    header#logged-in nav .jump-button {
+      display: inline;
+      float: left;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 60px;
+      position: relative;
+      left: 160px;
+      margin-top: 0.25em; }
+    header#logged-in nav .user-name {
+      display: inline;
+      float: left;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 220px;
+      position: relative;
+      left: 160px; }
+    header#logged-in nav .log-out {
+      display: inline;
+      float: left;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 60px;
+      position: relative;
+      left: 160px; }
   header#logged-in #logout {
     margin-left: 0.5em; }
 
@@ -382,7 +429,7 @@ ul.input-autocomplete {
   height: 1em;
   text-align: center;
   cursor: pointer;
-  background-color: transparent;
+  background: none;
   border: none;
   margin: -0.5em 0;
   padding: 0.5em;
@@ -444,13 +491,19 @@ header#logged-out h1 {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 940px; }
+  width: 940px;
+  font-family: aspire;
+  font-size: 80px;
+  padding-top: 0;
+  text-align: center; }
 
 #login-page {
-  background-color: #ebebeb;
+  background-color: #1788c3;
   width: 100%;
-  padding-top: 1.5em;
-  padding-bottom: 2em; }
+  padding-top: 0.5em;
+  padding-bottom: 1em; }
+  #login-page #login-form label {
+    color: white; }
   #login-page #login-form label, #login-page #login-form input, #login-page #login-form button {
     position: relative;
     left: 320px; }

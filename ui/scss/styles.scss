@@ -1,6 +1,12 @@
 @import 'reset';
 @import '960';
 
+$brand-color: #1788c3;
+
+body {
+  margin-top: 75px;
+}
+
 h1 { font-size: 2em; }
 h2 { font-size: 1.5em; }
 h3 { font-size: 1em; }
@@ -22,6 +28,31 @@ a {
 
 form {
 
+  input:not([type]),
+  input[type='text'],
+  input[type='password'] {
+    box-sizing: border-box;
+    border: 1px solid #434443;
+    border-radius: 2px;
+    padding: { left: 0.25em; right: 0.25em; }
+  }
+
+  button {
+    cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid black;
+    background: -webkit-linear-gradient(#f7f7f7, #dddddd); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f7f7f7, #dddddd); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f7f7f7, #dddddd); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f7f7f7, #dddddd); /* Standard syntax */
+    margin: { top: 0; bottom: 0; }
+    padding: { top: 0; bottom: 0; }
+    line-height: 1.5;
+    &:disabled {
+      border-color: #a2a2a2;
+    }
+  }
+
   fieldset {
     margin-top: 0.5em;
     &:first-child {
@@ -37,27 +68,12 @@ form {
     input[type='text'],
     input[type='password'] {
       @include row-cell(4);
-      box-sizing: border-box;
-      border: 1px solid #434443;
-      border-radius: 2px;
-      padding: { left: 0.25em; right: 0.25em; }
     }
   }
 
   .action {
     input, button, a {
       @include row-cell(2);
-      line-height: 1.5;
-    }
-    button {
-      border-radius: 2px;
-      border: 1px solid #a2a2a2;
-      background: -webkit-linear-gradient(#f7f7f7, #dddddd); /* For Safari 5.1 to 6.0 */
-      background: -o-linear-gradient(#f7f7f7, #dddddd); /* For Opera 11.1 to 12.0 */
-      background: -moz-linear-gradient(#f7f7f7, #dddddd); /* For Firefox 3.6 to 15 */
-      background: linear-gradient(#f7f7f7, #dddddd); /* Standard syntax */
-      margin: { top: 0; bottom: 0; }
-      padding: { top: 0; bottom: 0; }
     }
     a {
       text-align: center;
@@ -67,28 +83,56 @@ form {
 }
 
 header#logged-in {
-  padding-top: 1em;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+  background-color: $brand-color;
 
-  nav.left {
-    @include row-cell(6);
-    & > ul > li {
-      float: left;
-      &:first-child:before {
-        content: '';
-        margin: 0;
-      }
-      &:before {
-        font-size: 0.7em;
-        content: '>';
-        margin: 0.3em 0.5em;
-        display: block;
-        float: left;
-      }
+  nav {
+    margin: auto;
+
+    a {
+      text-decoration: none;
+      color: white;
     }
-  }
-  nav.right {
-    @include row-cell(6);
-    text-align: right;
+
+    .user-name,
+    .log-out,
+    .jump-label {
+      padding-top: 0.75em;
+      text-align: right;
+      font-size: 16px;
+      color: white;
+    }
+
+    .logo {
+      @include row-cell(2);
+      line-height: 50px;
+      font-family: aspire;
+      font-size: 40px;
+      background-color: $brand-color;
+      text-align: left;
+    }
+    .jump-input {
+      @include row-cell(3);
+      @include row-push(2);
+      margin-top: 0.25em;
+    }
+    .jump-button {
+      @include row-cell(1);
+      @include row-push(2);
+      margin-top: 0.25em;
+    }
+    .user-name {
+      @include row-cell(3);
+      @include row-push(2);
+    }
+    .log-out {
+      @include row-cell(1);
+      @include row-push(2);
+    }
   }
 
   #logout {

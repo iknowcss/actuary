@@ -1,4 +1,2 @@
-<nav class="right">
-  <strong><? echo $userName; ?></strong>
-  <a id="logout" href="./">Log out</a>
-</nav>
+<span class="user-name"><? echo $userName; ?></span>
+<a class="log-out" id="logout" href="./">Log out</a>

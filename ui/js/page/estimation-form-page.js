@@ -7,9 +7,8 @@
         estimationForm,
         userCardData,
         userCardId;
-
-    userCardData = document.getElementById('user-card-data').innerHTML;
-    userCardData = JSON.parse(userCardData);
+    
+    userCardData = actuary.util.getScriptJson('#user-card-data');
     userCardId = userCardData['_id']['$id'];
 
     // Prepare the ViewModel

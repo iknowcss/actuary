@@ -3,18 +3,20 @@
   window.addEventListener('DOMContentLoaded', function () {
     var existingCardNumbers,
         vm,
-        form;
+        form,
+        cardNumberInput;
 
-    existingCardNumbers = document.getElementById('existing-card-numbers');
-    existingCardNumbers = JSON.parse(existingCardNumbers.innerHTML);
+    existingCardNumbers = actuary.util.getScriptJson('#existing-card-numbers');
 
     vm = new actuary.vm.CardListCreateForm(existingCardNumbers);
     form = document.getElementById('card-list-create-form');
     ko.applyBindings(vm, form);
-
-    vm.cardNumber.subscribe(function (newValue) { form.submit(); }, null, 'autocomplete');
     
-    document.getElementById('card-number').focus();
+    cardNumberInput = $('#card-number');
+    cardNumberInput.data('autocompleter').dropdownClicked.subscribe(function (cardNumber) {
+      form.submit();
+    });
+    cardNumberInput.focus();
   });
 
 }(window.actuary, window.ko));

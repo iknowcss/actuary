@@ -4,6 +4,10 @@
         
   actuary.util = {
 
+    getScriptJson: function (selector) {
+      return JSON.parse($(selector).get(0).innerHTML);
+    },
+
     getWindowScroll: function () {
       return {
         top: (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0),

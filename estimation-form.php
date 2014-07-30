@@ -13,18 +13,24 @@
   $userCard = getUserCardByCardNumber($user, $cardNumber);
 ?>
 
+<? include('resource/card-list-json.php'); ?>
 <script id="user-card-data" type="application/json"><? echo json_encode($userCard); ?></script>
 <script type="text/javascript" src="ui/js/view-model/estimation-form.js"></script>
 <script type="text/javascript" src="ui/js/page/estimation-form-page.js"></script>
 
-<header id="logged-in" class="container">
-  <nav class="left">
-    <ul>
-      <li><a href="./card-list.php?user=<? echo $userName; ?>">Actuary</a></li>
-      <li><a href="./estimation-form.php?cardNumber=<? echo $cardNumber; ?>&amp;user=<? echo $userName; ?>"><? echo $cardNumber; ?></a></li>
-    </ul>
+<header id="logged-in">
+  <nav class="container">
+    <a class="logo" href="./card-list.php?user=<? echo $userName; ?>">Actuary</a>
+    <form id="jump-form" method="GET">
+      <input type="hidden" name="user" value="<? echo $userName; ?>"/>
+      <input type="text" name="cardNumber" class="jump-input" autocomplete="off" value="<? echo $cardNumber; ?>" 
+          data-bind="value: cardNumber,
+                     valueUpdate: 'afterkeydown',
+                     autocomplete: existingCardNumbers"/>
+      <button class="jump-button">Go</button>
+    </form>
+    <? include('resource/user-header.php'); ?>
   </nav>
-  <? include('resource/user-header.php'); ?>
 </header>
 
 <main id="estimation-form-page">
