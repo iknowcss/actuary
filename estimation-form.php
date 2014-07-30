@@ -28,21 +28,17 @@
 </header>
 
 <main id="estimation-form-page">
-  <header class="container">
+  <header class="container global-estimate-total-row">
     <h1><? echo $cardNumber; ?></h1>
-  </header>
 
-  <section class="container global-estimate-total-row">
     <span class="estimate-title">Estimate</span>
     <span class="estimate-total" data-bind="text: storyPoints.initPoints"></span>
     <span class="estimate-raw-total" data-bind="text: storyPoints.initRawPoints"></span>
-  </section>
-
-  <section class="container global-estimate-total-row">
+    <br/>
     <span class="estimate-title">Actual effort</span>
     <span class="estimate-total" data-bind="text: storyPoints.postPoints"></span>
     <span class="estimate-raw-total" data-bind="text: storyPoints.postRawPoints"></span>
-  </section>
+  </header>
 
   <form id="estimation-form">
 

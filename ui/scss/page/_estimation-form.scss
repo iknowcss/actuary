@@ -1,16 +1,17 @@
 #estimation-form-page {
-  header h1 {
-    @include row-cell(4);
-    @include row-push(4);
-  }
 
   .global-estimate-total-row {
     .estimate-title,
     .estimate-total,
     .estimate-raw-total {
-      @include row-push(4);
+      @include row-push(5);
     }
 
+
+    h1 {
+      @include row-cell(4);
+      padding-top: 0 !important;
+    }
     .estimate-title { @include row-cell(2); }
     .estimate-total { @include row-cell(1); }
     .estimate-raw-total { @include row-cell(1); }

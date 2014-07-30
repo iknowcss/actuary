@@ -1,6 +1,6 @@
 * {
   font: 24px open-sans, helvetica, sans-serif;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  -webkit-tap-highlight-color: transparent; }
 
 /* `XHTML, HTML4, HTML5 Reset
 ----------------------------------------------------------------------------------------------------*/
@@ -489,19 +489,18 @@ header#logged-out h1 {
   margin-right: 10px;
   width: 60px; }
 
-#estimation-form-page header h1 {
+#estimation-form-page .global-estimate-total-row .estimate-title,
+#estimation-form-page .global-estimate-total-row .estimate-total,
+#estimation-form-page .global-estimate-total-row .estimate-raw-total {
+  position: relative;
+  left: 400px; }
+#estimation-form-page .global-estimate-total-row h1 {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 300px;
-  position: relative;
-  left: 320px; }
-#estimation-form-page .global-estimate-total-row .estimate-title,
-#estimation-form-page .global-estimate-total-row .estimate-total,
-#estimation-form-page .global-estimate-total-row .estimate-raw-total {
-  position: relative;
-  left: 320px; }
+  padding-top: 0 !important; }
 #estimation-form-page .global-estimate-total-row .estimate-title {
   display: inline;
   float: left;
