@@ -27,7 +27,7 @@
 
 <main id="card-list-page">
   <header class="container">
-    <h1>Actuary</h1>
+    <h1>What card will you estimate?</h1>
   </header>
   <section>
     <form id="card-list-create-form" action="estimation-form.php" method="GET">

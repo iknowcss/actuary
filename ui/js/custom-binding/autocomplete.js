@@ -1,133 +1,207 @@
-(function (ko) {
+(function (ko, $) {
 
   ko.bindingHandlers.autocomplete = {
+    after: ['value', 'foreach'],
 
     init: function (element, valueAccessor, allBindingsAccessor) {
       var items = ko.utils.unwrapObservable(valueAccessor()),
-          inputWidth = element.offsetWidth,
-          inputHeight = element.offsetHeight,
-          inputRectangle = element.getBoundingClientRect(),
-          ul,
-          ulRectangle,
-          currentItem,
-          lis = [];
+          autocompleter = new Autocompleter(element, items),
+          valueBinding = allBindingsAccessor().value;
 
-      function filterList() {
-        var value = ko.utils.unwrapObservable(allBindingsAccessor().value),
-            currentWasFiltered = false,
-            unfilteredCount = 0;
-        lis.forEach(function (li) {
-          if (li.innerText.indexOf(value) == 0) {
-            li.classList.remove('filtered');
-            unfilteredCount++;
-          } else {
-            li.classList.add('filtered');
-            if (li.innerText == currentItem) {
-              currentWasFiltered = true;
-            }
-          }
-        });
-        if (currentWasFiltered) {
-          if (!highlightNext(-1)) {
-            highlightNext(1);
-          }
+      $.data(element, 'autocompleter', autocompleter);
+
+      if (valueBinding) {
+        if (valueBinding.subscribe instanceof Function) {
+          valueBinding.subscribe(function (newValue) {
+            autocompleter.filter(newValue);
+          });
         }
-        if (unfilteredCount == 0) {
-          ul.classList.add('empty');
-        } else {
-          ul.classList.remove('empty');
-        }
+        autocompleter.filter(ko.utils.unwrapObservable(valueBinding));
       }
-
-      function highlight(item) {
-        if (item instanceof Event) {
-          switch (item.which) {
-            case 40:
-              highlightNext(1);
-              break;
-            case 38:
-              highlightNext(-1);
-              break;
-            default: return;
-          }
-          item.preventDefault();
-          return;
-        }
-
-        lis.forEach(function (li) {
-          if (li.innerText == item) {
-            currentItem = item;
-            li.classList.add('highlighted');
-          } else {
-            li.classList.remove('highlighted');
-          }
-        });
-      }
-
-      function highlightNext(n) {
-        var nextIndex,
-            i;
-        for (i = items.indexOf(currentItem) + n; i < lis.length; i += n) {
-          if (i >= items.length || i < 0) {
-            break;
-          }
-          if (!lis[i].classList.contains('filtered')) {
-            highlight(lis[i].innerText);
-            return true;
-          }
-        }
-        return false;
-      }
-
-      function open() {
-        ul.classList.add('active');
-        filterList();
-        if (!currentItem) {
-          highlightNext(1);
-        }
-      }
-
-      function close(e) {
-        ul.classList.remove('active');
-      }
-
-      element.addEventListener('focus', open);
-      element.addEventListener('blur', close);
-      element.addEventListener('keydown', function (e) {
-        if (!ul.classList.contains('active')) {
-          open();
-        } else {
-          highlight(e);
-        }
-      });
-      allBindingsAccessor().value.subscribe(filterList);
-
-      element.insertAdjacentHTML('afterend', '<ul class="input-autocomplete"></ul>');
-      ul = element.nextElementSibling;
-      ulRectangle = ul.getBoundingClientRect();
-      ul.style.width = inputWidth + 'px';
-      ul.style.marginTop = (inputHeight + 1) + 'px';
-      ul.style.marginLeft = (inputRectangle.left - ulRectangle.left) + 'px';
-
-      items.forEach(function (item) {
-        var li = document.createElement('li');
-        li.innerText = item;
-        ul.appendChild(li);
-        li.addEventListener('mousedown', function () {
-          allBindingsAccessor().value(item);
-          allBindingsAccessor().value.notifySubscribers(item, 'autocomplete');
-        });
-        li.addEventListener('mouseover', function () {
-          highlight(item);
-        });
-        lis.push(li);
-      });
     },
 
     update: function (element, valueAccessor, allBindingsAccessor) {
-      // Not implemented yet
+      // TODO
     }
+  };
 
+  function Autocompleter(input, items) {
+    this.input = $(input);
+    this.items = items || [];
+
+    this.bindInputEvents();
+    this.constructListBox();
+
+    this.highlightedLi = ko.observable();
   }
 
-}(window.ko));
+  _.extend(Autocompleter.prototype, {
+
+    bindInputEvents: function () {
+      this.input
+        .on('focus.autocompleter', $.proxy(this.open, this))
+        .on('blur.autocompleter', $.proxy(this.close, this))
+        .on('keydown.autocompleter', $.proxy(this.handleInputKeypress, this));
+    },
+
+    bindDropdownEvents: function () {
+      var self = this;
+      this.ul
+        .on('mouseover.autocompleter', 'li', function (e) {
+          self.highlight($(e.target));
+        })
+        .on('mousedown.autocompleter', 'li', function (e) {
+          alert($(e.target).text());
+        });
+    },
+
+    constructListBox: function () {
+      this.ul = $('<ul class="input-autocomplete"></ul>').insertAfter(this.input);
+      this.ul.css({
+        'width'       : (this.input.outerWidth() - 2) + 'px',
+        'margin-top'  : (this.input.outerHeight() + 1) + 'px',
+        'margin-left' : (this.input.offset().left - this.ul.offset().left) + 'px'
+      });
+
+      _.each(this.items, function (item) {
+        $('<li></li>')
+            .text(item)
+            .data('autocompleter-item', item)
+            .appendTo(this.ul);
+      }, this);
+
+      this.lis = this.ul.find('li');
+      this.bindDropdownEvents();
+    },
+
+    handleInputKeypress: function (e) {
+      if (!this.ul.hasClass('active')) {
+        this.open();
+      } else {
+        this.higlightByKeyEvent(e);
+      }
+    },
+
+    highlight: function (item) {
+      var newHighlightedLi;
+
+      this.lis.removeClass('highlighted');
+      if (item instanceof $) {
+        newHighlightedLi = item.addClass('highlighted');
+      } else {
+        this.lis.each(function (li) {
+          if (!newHighlightedLi && $.data(this, 'autocompleter-item') == item) {
+            newHighlightedLi = $(this).addClass('highlighted');
+          }
+        });
+      }
+
+      this.highlightedLi(newHighlightedLi);
+    },
+
+    unhighlight: function () {
+      this.highlightedLi(null);
+      this.lis.removeClass('highlighted');
+    },
+
+    pauseFiltering: function () {
+      this.pauseFilter = true;
+    },
+
+    enableFiltering: function () {
+      this.pauseFilter = false;
+    },
+
+    setInputValToHighlightedItem: function () {
+      this.input.val(this.highlightedLi().data('autocompleter-item'));
+    },
+
+    higlightByKeyEvent: function (e) {
+      switch (e.which) {
+        case 40:
+          this.highlightNext(1);
+          this.pauseFiltering();
+          break;
+        case 38:
+          this.highlightNext(-1);
+          this.pauseFiltering();
+          break;
+        default:
+          this.enableFiltering();
+          this.highlightExactMatch();
+          return;
+      }
+      e.preventDefault();
+      this.setInputValToHighlightedItem();
+    },
+
+    highlightExactMatch: function () {
+      var self = this;
+      setTimeout(function () {
+        self.highlight(self.input.val());
+      }, 10);
+    },
+
+    highlightNext: function (n) {
+      var currentLi = this.highlightedLi(),
+          nextLi;
+      if (!currentLi) {
+        nextLi = this.ul.find('li:not(.filtered)')[n < 0 ? 'last' : 'first']();
+      } else {
+        nextLi = currentLi[n < 0 ? 'prevAll' : 'nextAll']('li:not(.filtered)').first();
+      }
+
+      if (nextLi.length > 0) {
+        this.highlight(nextLi);
+        return true;
+      }
+
+      return false;
+    },
+
+    filter: function (value) {
+      var currentHighlighted = this.highlightedLi(),
+          currentWasFiltered = false,
+          unfilteredCount = 0;
+
+      if (this.pauseFilter) {
+        return;
+      }
+
+      this.lis
+        .addClass('filtered')
+        .each(function () {
+          var $this = $(this),
+              item = $this.data('autocompleter-item');
+          if (item.indexOf(value) >= 0) {
+            $this.removeClass('filtered');
+            unfilteredCount++;
+          } else if (currentHighlighted && $this.get(0) == currentHighlighted.get(0)) {
+            currentWasFiltered = true;
+          }
+        });
+
+      if (currentWasFiltered) {
+        if (!this.highlightNext(1)) {
+          this.highlightNext(-1);
+        }
+      }
+
+      if (unfilteredCount == 0) {
+        this.ul.addClass('empty');
+      } else {
+        this.ul.removeClass('empty');
+      }
+    },
+
+    open: function () {
+      this.ul.addClass('active');
+    },
+
+    close: function (e) {
+      this.ul.removeClass('active');
+    }
+
+  });
+
+}(window.ko, window.jQuery));

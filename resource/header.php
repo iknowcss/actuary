@@ -28,8 +28,9 @@
   <script type="text/javascript" src="ui/js/vendor/Tocca.min.js"></script>
   <script type="text/javascript">var JUST_ON_TOUCH_DEVICES = true;</script>
 
-  <script type="text/javascript" src="ui/js/vendor/knockout.js"></script>
   <script type="text/javascript" src="ui/js/vendor/underscore.js"></script>
+  <script type="text/javascript" src="ui/js/vendor/jquery.js"></script>
+  <script type="text/javascript" src="ui/js/vendor/knockout.js"></script>
   <script type="text/javascript" src="ui/js/app.js"></script>
   <script type="text/javascript" src="ui/js/util/util.js"></script>
   <script type="text/javascript" src="ui/js/util/grid.js"></script>

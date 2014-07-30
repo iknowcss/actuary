@@ -5,6 +5,11 @@ ul.input-autocomplete {
        -o-transition: opacity 200ms; /* Opera */
           transition: opacity 200ms;
 
+  // box-sizing: border-box;
+  border: 1px solid black;
+  position: absolute;
+  background-color: white;
+  
   &.active {
     top: auto;
     opacity: 1;
@@ -17,10 +22,6 @@ ul.input-autocomplete {
     opacity: 0;
   }
 
-  box-sizing: border-box;
-  border: 1px solid black;
-  position: absolute;
-  background-color: white;
   li {
     cursor: pointer;
     line-height: 1.5em;
