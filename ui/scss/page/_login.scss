@@ -1,10 +1,9 @@
 header#logged-out {
   h1 {
-    @include row-cell(12);
+    @include row-cell(4);
     font-family: aspire;
     font-size: 80px;
     padding-top: 0;
-    text-align: center;
   }
 }
 

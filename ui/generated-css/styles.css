@@ -291,7 +291,7 @@ form button {
   padding-bottom: 0;
   line-height: 1.5; }
   form button:disabled {
-    cursor: default !important;
+    cursor: default;
     border-color: #a2a2a2; }
 form fieldset {
   margin-top: 0.5em; }
@@ -493,11 +493,10 @@ header#logged-out h1 {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 940px;
+  width: 300px;
   font-family: aspire;
   font-size: 80px;
-  padding-top: 0;
-  text-align: center; }
+  padding-top: 0; }
 
 #login-page {
   background-color: #1788c3;
