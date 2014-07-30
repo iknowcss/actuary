@@ -213,10 +213,12 @@
 
     open: function () {
       this.ul.addClass('active');
+      this.highlightExactMatch();
     },
 
     close: function (e) {
       this.ul.removeClass('active');
+      this.unhighlight();
     }
 
   });

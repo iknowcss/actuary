@@ -2,6 +2,8 @@
 
   $(function () {
     var jumpForm = $('#jump-form'),
+        vm,
+        autocompleter,
         cardNumberInput,
         initCardNumber,
         existingCardNumbers;
@@ -11,14 +13,24 @@
       cardNumberInput = jumpForm.find('.jump-input');
       existingCardNumbers = actuary.util.getScriptJson('#existing-card-numbers');
       initCardNumber = cardNumberInput.val();
-      ko.applyBindings(new JumpForm(existingCardNumbers, initCardNumber), jumpForm.get(0));
+      vm = new JumpForm(existingCardNumbers, initCardNumber);
+      ko.applyBindings(vm, jumpForm.get(0));
+
       cardNumberInput.data('autocompleter').dropdownClicked.subscribe(function (cardNumber) {
         jumpForm.submit();
       });
 
       actuary.kb.setShortcut('J', function () {
-        cardNumberInput.focus().val(cardNumberInput.val());
+        cardNumberInput.focus();
       });
+
+      cardNumberInput
+        .on('blur', function () {
+          vm.cardNumber(initCardNumber);
+        })
+        .on('focus', function () {
+          vm.cardNumber(actuary.DEFAULT_CARD_NUMBER);
+        });
     }
 
   });
