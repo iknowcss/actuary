@@ -23,7 +23,6 @@
   <section>
     <form id="card-list-create-form" action="estimation-form.php" method="GET"
         data-bind="submit: function () { return isValidCardNumber(); }">
-      <span data-bind="text: isValidCardNumber"></span>
       <fieldset>
         <div class="container">
           <label for="card-number">Card number</label>
