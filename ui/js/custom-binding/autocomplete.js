@@ -85,10 +85,17 @@
     },
 
     handleInputKeypress: function (e) {
-      if (!this.ul.hasClass('active')) {
-        this.open();
+      // Close on Esc
+      if (e.which == 27) {
+        this.close();
+        this.input.blur();
+        return;
       } else {
-        this.higlightByKeyEvent(e);
+        if (!this.ul.hasClass('active')) {
+          this.open();
+        } else {
+          this.higlightByKeyEvent(e);
+        }
       }
     },
 

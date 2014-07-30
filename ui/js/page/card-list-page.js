@@ -1,10 +1,11 @@
-(function (actuary, ko) {
+(function (actuary, ko, $) {
 
   window.addEventListener('DOMContentLoaded', function () {
     var existingCardNumbers,
         vm,
         form,
-        cardNumberInput;
+        cardNumberInput,
+        tipBubble = $('#tip');
 
     existingCardNumbers = actuary.util.getScriptJson('#existing-card-numbers');
 
@@ -19,7 +20,10 @@
 
     actuary.kb.setShortcut('J', function () {
       cardNumberInput.focus().val(cardNumberInput.val());
+      tipBubble.removeClass('active');
     });
+
+    setTimeout(function () { tipBubble.addClass('active'); }, 250);
   });
 
-}(window.actuary, window.ko));
+}(window.actuary, window.ko, window.jQuery));

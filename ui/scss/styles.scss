@@ -3,6 +3,25 @@
 
 $brand-color: #1788c3;
 
+@mixin vertical-gradient($start-color, $end-color) {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient($start-color, $end-color);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient($start-color, $end-color);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient($start-color, $end-color);
+  /* Standard syntax */
+  background: linear-gradient($start-color, $end-color);
+}
+
+@mixin transition($declaration, $duration) {
+  -webkit-transition: $declaration $duration; /* Safari and Chrome */
+     -moz-transition: $declaration $duration; /* Firefox */
+      -ms-transition: $declaration $duration; /* Internet Explorer */
+       -o-transition: $declaration $duration; /* Opera */
+          transition: $declaration $duration;
+}
+
 body {
   margin-top: 75px;
 }
@@ -38,13 +57,10 @@ form {
   }
 
   button {
+    @include vertical-gradient(#f7f7f7, #dddddd);
     cursor: pointer;
     border-radius: 2px;
     border: 1px solid black;
-    background: -webkit-linear-gradient(#f7f7f7, #dddddd); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#f7f7f7, #dddddd); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#f7f7f7, #dddddd); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#f7f7f7, #dddddd); /* Standard syntax */
     margin: { top: 0; bottom: 0; }
     padding: { top: 0; bottom: 0; }
     line-height: 1.5;

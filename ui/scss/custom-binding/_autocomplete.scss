@@ -1,9 +1,5 @@
 ul.input-autocomplete {
-  -webkit-transition: opacity 200ms; /* Safari and Chrome */
-     -moz-transition: opacity 200ms; /* Firefox */
-      -ms-transition: opacity 200ms; /* Internet Explorer */
-       -o-transition: opacity 200ms; /* Opera */
-          transition: opacity 200ms;
+  @include transition(opacity, 200ms);
 
   // box-sizing: border-box;
   border: 1px solid black;

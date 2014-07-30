@@ -35,7 +35,12 @@
 
 <main id="estimation-form-page">
   <header class="container global-estimate-total-row">
-    <h1><? echo $cardNumber; ?></h1>
+    <h1>
+      <? echo $cardNumber; ?>
+      <span class="jira-link">(
+        <a href="https://jira.ec2.local/browse/<? echo $cardNumber; ?>" target="_blank">JIRA</a>
+      )</span>
+    </h1>
 
     <span class="estimate-title">Estimate</span>
     <span class="estimate-total" data-bind="text: storyPoints.initPoints"></span>
@@ -50,7 +55,7 @@
 
     <!-- ko foreach: groups -->
     <section>
-      <header class="container">
+      <header class="container group-name">
         <h2 data-bind="text: name"></h2>
       </header>
 

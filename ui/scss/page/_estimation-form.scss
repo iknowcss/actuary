@@ -11,6 +11,9 @@
     h1 {
       @include row-cell(4);
       padding-top: 0 !important;
+      a {
+        font-size: inherit;
+      }
     }
     .estimate-title { @include row-cell(2); }
     .estimate-total { @include row-cell(1); }
@@ -31,13 +34,20 @@
   }
 
   #estimation-form {
+    .group-name {
+      border-bottom: 3px double #9b9b9b;
+    }
+
+    .estimate-total-row {
+      border-top: 1px dashed #9b9b9b;
+    }
+
     header {
       h2 {
         @include row-cell(12);
         &:before {
           content: '\00BB';
-          position: absolute;
-          margin-left: -1em;
+          margin-right: 0.25em;
         }
       }
       h3 {
@@ -74,7 +84,7 @@
       .estimate-title,
       .estimate-effort,
       .estimate-note {
-        border-top: 1px solid black;
+        // border-top: 1px solid black;
       }
       .estimate-effort {
         text-align: right;

@@ -274,17 +274,17 @@ form input[type='password'] {
   padding-left: 0.25em;
   padding-right: 0.25em; }
 form button {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#f7f7f7, #dddddd);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#f7f7f7, #dddddd);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#f7f7f7, #dddddd);
+  /* Standard syntax */
+  background: linear-gradient(#f7f7f7, #dddddd);
   cursor: pointer;
   border-radius: 2px;
   border: 1px solid black;
-  background: -webkit-linear-gradient(#f7f7f7, #dddddd);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#f7f7f7, #dddddd);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#f7f7f7, #dddddd);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#f7f7f7, #dddddd);
-  /* Standard syntax */
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 0;
@@ -545,6 +545,15 @@ header#logged-out h1 {
     margin-right: 10px;
     width: 60px; }
 #card-list-page #tip {
+  -webkit-transition: opacity 200ms;
+  /* Safari and Chrome */
+  -moz-transition: opacity 200ms;
+  /* Firefox */
+  -ms-transition: opacity 200ms;
+  /* Internet Explorer */
+  -o-transition: opacity 200ms;
+  /* Opera */
+  transition: opacity 200ms;
   display: inline;
   float: left;
   margin-left: 10px;
@@ -552,18 +561,31 @@ header#logged-out h1 {
   width: 220px;
   position: relative;
   left: 240px;
+  opacity: 0;
   font-size: 16px;
   background-color: #1788c3;
   color: white;
   box-sizing: border-box;
   padding: 0.5em;
   border-radius: 2px; }
+  #card-list-page #tip.active {
+    opacity: 1; }
   #card-list-page #tip .keyboard {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#f7f7f7, #dddddd);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#f7f7f7, #dddddd);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#f7f7f7, #dddddd);
+    /* Standard syntax */
+    background: linear-gradient(#f7f7f7, #dddddd);
+    color: black;
+    border: 1px solid #a2a2a2;
+    border-radius: 4px;
+    cursor: default;
     font-family: courier;
     font-size: 0.75em;
-    border: 1px solid white;
     padding: 0.25em 0.5em 0em 0.5em;
-    border-radius: 2px;
     position: relative;
     bottom: 0.1em; }
   #card-list-page #tip:before {
@@ -591,6 +613,8 @@ header#logged-out h1 {
   margin-right: 10px;
   width: 300px;
   padding-top: 0 !important; }
+  #estimation-form-page .global-estimate-total-row h1 a {
+    font-size: inherit; }
 #estimation-form-page .global-estimate-total-row .estimate-title {
   display: inline;
   float: left;
@@ -617,6 +641,10 @@ header#logged-out h1 {
   color: #9b9b9b; }
 #estimation-form-page .global-estimate-total-row .estimate-total:hover + .estimate-raw-total {
   visibility: visible; }
+#estimation-form-page #estimation-form .group-name {
+  border-bottom: 3px double #9b9b9b; }
+#estimation-form-page #estimation-form .estimate-total-row {
+  border-top: 1px dashed #9b9b9b; }
 #estimation-form-page #estimation-form header h2 {
   display: inline;
   float: left;
@@ -625,8 +653,7 @@ header#logged-out h1 {
   width: 940px; }
   #estimation-form-page #estimation-form header h2:before {
     content: '\00BB';
-    position: absolute;
-    margin-left: -1em; }
+    margin-right: 0.25em; }
 #estimation-form-page #estimation-form header h3 {
   font-weight: bold; }
   #estimation-form-page #estimation-form header h3.estimate-type-header {
@@ -674,10 +701,6 @@ header#logged-out h1 {
   background-color: #ebebeb; }
 #estimation-form-page #estimation-form .estimate-total-row {
   margin-top: 0.25em; }
-  #estimation-form-page #estimation-form .estimate-total-row .estimate-title,
-  #estimation-form-page #estimation-form .estimate-total-row .estimate-effort,
-  #estimation-form-page #estimation-form .estimate-total-row .estimate-note {
-    border-top: 1px solid black; }
   #estimation-form-page #estimation-form .estimate-total-row .estimate-effort {
     text-align: right; }
 
