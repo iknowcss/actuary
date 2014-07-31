@@ -22,13 +22,22 @@
     self.storyPoints = new EstimationPoints(self.grandTotal);
 
     self.toJson = ko.computed(EstimationForm.prototype.toJson, this);
+
+    self.hasNewFields = false;
+    self.mergeNewFields = function () {
+      window.confirm('Are you sure?');
+    };
   }
 
-  EstimationForm.prototype.toJson = function () {
-    return {
-      groups: this.groups.map(function (group) { return group.toJson(); })
-    };
-  };
+  _.extend(EstimationForm.prototype, {
+
+    toJson: function () {
+      return {
+        groups: this.groups.map(function (group) { return group.toJson(); })
+      };
+    }
+
+  });
 
   /// - Estimation Group -------------------------------------------------------
 

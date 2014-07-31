@@ -13,31 +13,7 @@
 
     // Prepare the ViewModel
     estimationForm = new actuary.vm.EstimationForm({
-      groups: userCardData.groups || [
-        { name  : 'Front-end',
-          items : [
-            { name  : 'JSP' },
-            { name  : 'JavaScript' },
-            { name  : 'CSS' } ] },
-        { name  : 'Middle',
-          items : [
-            { name  : 'Model' },
-            { name  : 'Controller' },
-            { name  : 'Service' },
-            { name  : 'Repository' } ] },
-        { name  : 'Database',
-          items : [
-            { name  : 'Schema' } ,
-            { name  : 'Queries' } ] },
-        { name  : 'Testing',
-          items : [
-            { name  : 'Step defs' },
-            { name  : 'E2E' } ] },
-        { name  : 'General',
-          items : [
-            { name  : 'Code smell' },
-            { name  : 'Unknowns' } ] }
-      ]
+      groups: userCardData.groups || actuary.EMPTY_ESTIMATION
     });
 
     // Apply view bindings

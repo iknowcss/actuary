@@ -18,6 +18,7 @@
     .estimate-title { @include row-cell(2); }
     .estimate-total { @include row-cell(1); }
     .estimate-raw-total { @include row-cell(1); }
+    .estimate-add-fields { @include row-cell(3); }
 
     .estimate-total,
     .estimate-raw-total {
@@ -30,6 +31,28 @@
     }
     .estimate-total:hover + .estimate-raw-total {
       visibility: visible;
+    }
+
+    .estimate-add-fields {
+      @include row-push(1);
+      text-align: center;
+      a {
+        @include vertical-gradient(lighten($danger-color, 20%), $danger-color);
+        border: 1px solid darken($danger-color, 30%);
+        // @include transition(background-color 200ms);
+        text-decoration: none;
+        font-size: 16px;
+        color: white;
+        background-color: $danger-color;
+        border-radius: $button-border-radius;
+        padding: 0.1em 0.5em;
+        &:hover {
+          @include vertical-gradient(lighten($danger-color, 30%), $danger-color);
+        }
+        &:active {
+          @include vertical-gradient($danger-color, lighten($danger-color, 20%));
+        }
+      }
     }
   }
 

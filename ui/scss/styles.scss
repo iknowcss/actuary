@@ -2,6 +2,8 @@
 @import '960';
 
 $brand-color: #1788c3;
+$danger-color: rgb(236, 65, 52);
+$button-border-radius: 4px;
 
 @mixin vertical-gradient($start-color, $end-color) {
   /* For Safari 5.1 to 6.0 */
@@ -14,12 +16,12 @@ $brand-color: #1788c3;
   background: linear-gradient($start-color, $end-color);
 }
 
-@mixin transition($declaration, $duration) {
-  -webkit-transition: $declaration $duration; /* Safari and Chrome */
-     -moz-transition: $declaration $duration; /* Firefox */
-      -ms-transition: $declaration $duration; /* Internet Explorer */
-       -o-transition: $declaration $duration; /* Opera */
-          transition: $declaration $duration;
+@mixin transition($definition...) {
+  -webkit-transition: $definition; /* Safari and Chrome */
+     -moz-transition: $definition; /* Firefox */
+      -ms-transition: $definition; /* Internet Explorer */
+       -o-transition: $definition; /* Opera */
+          transition: $definition;
 }
 
 body {
@@ -38,7 +40,7 @@ a {
   color: rgb(0, 153, 205);
   text-decoration: none;
   &:hover { text-decoration: underline; }
-  &:active { color: rgb(236, 65, 52); }
+  &:active { color: $danger-color; }
 }
 
 .container {
@@ -52,14 +54,14 @@ form {
   input[type='password'] {
     box-sizing: border-box;
     border: 1px solid #434443;
-    border-radius: 2px;
+    border-radius: $button-border-radius;
     padding: { left: 0.25em; right: 0.25em; }
   }
 
   button {
     @include vertical-gradient(#f7f7f7, #dddddd);
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: $button-border-radius;
     border: 1px solid black;
     margin: { top: 0; bottom: 0; }
     padding: { top: 0; bottom: 0; }

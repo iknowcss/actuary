@@ -270,7 +270,7 @@ form input[type='text'],
 form input[type='password'] {
   box-sizing: border-box;
   border: 1px solid #434443;
-  border-radius: 2px;
+  border-radius: 4px;
   padding-left: 0.25em;
   padding-right: 0.25em; }
 form button {
@@ -283,7 +283,7 @@ form button {
   /* Standard syntax */
   background: linear-gradient(#f7f7f7, #dddddd);
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 1px solid black;
   margin-top: 0;
   margin-bottom: 0;
@@ -635,6 +635,12 @@ header#logged-out h1 {
   margin-left: 10px;
   margin-right: 10px;
   width: 60px; }
+#estimation-form-page .global-estimate-total-row .estimate-add-fields {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px; }
 #estimation-form-page .global-estimate-total-row .estimate-total,
 #estimation-form-page .global-estimate-total-row .estimate-raw-total {
   text-align: right; }
@@ -643,6 +649,44 @@ header#logged-out h1 {
   color: #9b9b9b; }
 #estimation-form-page .global-estimate-total-row .estimate-total:hover + .estimate-raw-total {
   visibility: visible; }
+#estimation-form-page .global-estimate-total-row .estimate-add-fields {
+  position: relative;
+  left: 80px;
+  text-align: center; }
+  #estimation-form-page .global-estimate-total-row .estimate-add-fields a {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#f59891, #ec4134);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#f59891, #ec4134);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#f59891, #ec4134);
+    /* Standard syntax */
+    background: linear-gradient(#f59891, #ec4134);
+    border: 1px solid #7b130c;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    background-color: #ec4134;
+    border-radius: 4px;
+    padding: 0.1em 0.5em; }
+    #estimation-form-page .global-estimate-total-row .estimate-add-fields a:hover {
+      /* For Safari 5.1 to 6.0 */
+      background: -webkit-linear-gradient(#f9c4c0, #ec4134);
+      /* For Opera 11.1 to 12.0 */
+      background: -o-linear-gradient(#f9c4c0, #ec4134);
+      /* For Firefox 3.6 to 15 */
+      background: -moz-linear-gradient(#f9c4c0, #ec4134);
+      /* Standard syntax */
+      background: linear-gradient(#f9c4c0, #ec4134); }
+    #estimation-form-page .global-estimate-total-row .estimate-add-fields a:active {
+      /* For Safari 5.1 to 6.0 */
+      background: -webkit-linear-gradient(#ec4134, #f59891);
+      /* For Opera 11.1 to 12.0 */
+      background: -o-linear-gradient(#ec4134, #f59891);
+      /* For Firefox 3.6 to 15 */
+      background: -moz-linear-gradient(#ec4134, #f59891);
+      /* Standard syntax */
+      background: linear-gradient(#ec4134, #f59891); }
 #estimation-form-page #estimation-form .group-name {
   border-bottom: 3px double #9b9b9b; }
 #estimation-form-page #estimation-form .estimate-total-row {

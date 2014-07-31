@@ -28,7 +28,7 @@
   }
 
   #tip {
-    @include transition(opacity, 200ms);
+    @include transition(opacity 200ms);
     &.active {
       opacity: 1;
     }
