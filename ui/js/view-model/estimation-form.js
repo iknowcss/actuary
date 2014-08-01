@@ -1,6 +1,7 @@
 (function (actuary) {
 
   var PLANNING_POKER = [ 1, 2, 3, 5, 8, 13, 20, 40 ],
+      DEFAULT_POINT_WEIGHT = 0.25,
       ESTIMATE = 'ESTIMATE',
       ACTUAL = 'ACTUAL';
 
@@ -19,134 +20,102 @@
     });
 
     self.grandTotal = new EstimationTotal(self.groups);
-    self.storyPoints = new EstimationPoints(self.grandTotal);
+    self.grandTotal.initPokerPoints = ko.computed(function () {
+      var points = self.grandTotal.initPoints(),
+          len = PLANNING_POKER.length,
+          i;
+      if (!points) {
+        return 0;
+      }
 
-    self.toJson = ko.computed(EstimationForm.prototype.toJson, this);
+      // TODO
+    });
 
     self.hasNewFields = false;
     self.mergeNewFields = function () {
       window.confirm('Are you sure?');
     };
-  }
 
-  _.extend(EstimationForm.prototype, {
-
-    toJson: function () {
+    self.toJson = ko.computed(function () {
       return {
-        groups: this.groups.map(function (group) { return group.toJson(); })
+        groups: self.groups.map(function (group) {
+          return group.toJson();
+        })
       };
-    }
-
-  });
+    });
+  }
 
   /// - Estimation Group -------------------------------------------------------
 
   function EstimationGroup(group) {
-    this.name = group.name;
-    this.items = [];
+    var self = this;
+
+    self.name = group.name;
+    self.items = [];
+
     group.items.forEach(function (item) {
-      this.items.push(new EstimationItem(item));
-    }, this);
-    this.total = new EstimationTotal(this.items);
-    this.points = new EstimationPoints(this.total);
+      self.items.push(new EstimationItem(item));
+    });
 
-    this.toJson = ko.computed(EstimationGroup.prototype.toJson, this);
+    self.total = new EstimationTotal(self.items);
+
+    self.toJson = ko.computed(function () {
+      return {
+        name  : self.name,
+        items : self.items.map(function (item) { return item.toJson(); })
+      };
+    });
   }
-
-  EstimationGroup.prototype.toJson = function () {
-    return {
-      name  : this.name,
-      items : this.items.map(function (item) { return item.toJson(); })
-    };
-  };
 
   /// - Estimation item --------------------------------------------------------
 
   function EstimationItem(item) {
-    this.name = item.name;
-    this.initRating = ko.observable(item.initRating || 0);
-    this.postRating = ko.observable(item.postRating || 0);
-    this.note = ko.observable(item.note);
+    var self = this;
 
-    this.toJson = ko.computed(EstimationItem.prototype.toJson, this);
+    self.name = item.name;
+    self.pointWeight = ko.observable(item.pointWeight || DEFAULT_POINT_WEIGHT);
+    self.initRating = ko.observable(item.initRating || 0);
+    self.postRating = ko.observable(item.postRating || 0);
+    self.note = ko.observable(item.note);
+
+    self.initPoints = ko.computed(function () {
+      return self.initRating() * self.pointWeight();
+    });
+    self.postPoints = ko.computed(function () {
+      return self.postRating() * self.pointWeight();
+    });
+
+    self.toJson = ko.computed(function () {
+      return {
+        name        : self.name,
+        initRating  : self.initRating(),
+        postRating  : self.postRating(),
+        note        : self.note()
+      };
+    });
   }
-
-  EstimationItem.prototype.toJson = function () {
-    return {
-      name        : this.name,
-      initRating  : this.initRating(),
-      postRating  : this.postRating(),
-      note        : this.note()
-    };
-  };
 
   /// - Estimation Total -------------------------------------------------------
 
   function EstimationTotal(estimationItems) {
-    this.initTotal = ko.computed(function () {
-      return _.reduce(estimationItems, function (memo, item) {
-        var itemValue = 0;
-        if (item instanceof EstimationGroup) {
-          itemValue = item.total.initTotal();
-        } else {
-          itemValue = item.initRating();
-        }
-        return memo + itemValue;
-      }, 0);
-    });
-    this.postTotal = ko.computed(function () {
-      return _.reduce(estimationItems, function (memo, item) {
-        var itemValue = 0;
-        if (item instanceof EstimationGroup) {
-          itemValue = item.total.postTotal();
-        } else {
-          itemValue = item.postRating();
-        }
-        return memo + itemValue;
-      }, 0);
-    });
-  }
-
-  /// - Estimation points ------------------------------------------------------
-
-  function EstimationPoints(estimationTotal) {
-    var self = this;
-
-    self.initRawPoints = ko.computed(function () {
-      return estimationTotal.initTotal() / 4;
-    });
-
-    self.initPoints = ko.computed(function () {
-      var rawPoints = self.initRawPoints(),
-          len = PLANNING_POKER.length,
-          i;
-      if (rawPoints === 0) {
-        return '-'
-      }
-      for (i = 0; i < len; i++) {
-        if (rawPoints <= PLANNING_POKER[i]) {
-          return PLANNING_POKER[i];
-        }
-      }
-    });
-
-    self.postRawPoints = ko.computed(function () {
-      return estimationTotal.postTotal() / 4;
-    });
-
-    self.postPoints = ko.computed(function () {
-      var rawPoints = self.postRawPoints(),
-          len = PLANNING_POKER.length,
-          i;
-      if (rawPoints === 0) {
-        return '-'
-      }
-      for (i = 0; i < len; i++) {
-        if (rawPoints <= PLANNING_POKER[i]) {
-          return PLANNING_POKER[i];
-        }
-      }
-    });
+    function computeTotal(type) {
+      return function () {
+        return _.reduce(estimationItems, function (memo, item) {
+          var itemValue = 0;
+          if (item instanceof EstimationGroup) {
+            itemValue = item.total[type]();
+          } else {
+            itemValue = item[type]();
+          }
+          return memo + itemValue;
+        }, 0);
+      };
+    }
+    
+    this.initRating = ko.computed(computeTotal('initRating'));
+    this.initPoints = ko.computed(computeTotal('initPoints'));
+    this.postRating = ko.computed(computeTotal('postRating'));
+    this.postPoints = ko.computed(computeTotal('postPoints'));
   }
 
 }(window.actuary));

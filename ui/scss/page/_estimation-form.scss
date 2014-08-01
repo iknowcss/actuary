@@ -39,7 +39,6 @@
       a {
         @include vertical-gradient(lighten($danger-color, 20%), $danger-color);
         border: 1px solid darken($danger-color, 30%);
-        // @include transition(background-color 200ms);
         text-decoration: none;
         font-size: 16px;
         color: white;
@@ -87,12 +86,16 @@
     .estimate-item-row,
     .estimate-total-row {
       .estimate-title,
-      // .estimate-effort,
+      .estimate-score,
       .estimate-note {
         padding: { top: 0.5em; bottom: 0.5em; }
       }
       .estimate-title  { @include row-cell(3); }
-      .estimate-effort { @include row-cell(4); }
+      .estimate-score {
+        @include row-cell(1);
+        text-align: right;
+      }
+      .estimate-effort { @include row-cell(3); }
       .estimate-note   { @include row-cell(5); }
     }
 
@@ -108,8 +111,8 @@
 
     .estimate-total-row {
       margin-top: 0.25em;
-      .estimate-effort {
-        text-align: right;
+      .estimate-score {
+        @include row-push(3);
       }
     }
   }

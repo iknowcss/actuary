@@ -7,41 +7,43 @@
 
   @mixin bubble-button($base-color: $button-color) {
     font-family: fontello;
-    &:before {
+    span {
       @include vertical-gradient(lighten($base-color, 20%), $base-color);
       border: 1px solid darken($base-color, 20%);
       border-radius: $button-border-radius;
       width: 1em;
       height: 1em;
-      content: '\e0000';
       display: block;
       margin: auto;
     }
-    &:hover:before {
+    &:hover span {
       @include vertical-gradient(lighten($base-color, 30%), $base-color);
     }
-    &:active:before {
+    &:active span {
       @include vertical-gradient($base-color, lighten($base-color, 20%));
     }
   }
 
   button {
-    $available-space: 2.5em;
-    $button-size: 2em;
+    $available-space: 2em;
+    $button-size: 1.75em;
     $button-margin: ($available-space - $button-size) / 2;
 
-    width: 2em;
-    height: 2em;
-    margin: 0.25em 0.5em 0.25em 0;
+    width: $button-size;
+    height: $button-size;
+    margin: $button-margin ($button-margin * 2) $button-margin 0;
     background: none !important;
     padding: 0;
     border: none;
     outline: none;
 
     &.effort-clear {
-      &:before {
-        font-family: fontello;
-        content: '\e802';
+      // margin-right: 0;
+      span {
+        &:before {
+          font-family: fontello;
+          content: '\e802';
+        }
         width: 1em;
         height: 1em;
         display: block;
@@ -49,7 +51,7 @@
         position: relative;
         top: -0.25em;
       }
-      &:hover:before {
+      &:hover span {
         color: $danger-color;
       }
     }
