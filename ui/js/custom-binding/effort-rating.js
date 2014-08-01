@@ -13,7 +13,6 @@
       element.classList.add('effort-rating');
 
       // Create the "clear" button
-      
       button = document.createElement('button');
       button.classList.add('effort-clear');
       addClickEvent(button, function () { valueAccessor()(0); });

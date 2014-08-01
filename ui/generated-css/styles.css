@@ -449,152 +449,163 @@ ul.input-autocomplete {
   margin: 0.25em 0.5em 0.25em 0;
   background: none !important;
   padding: 0;
-  border: none; }
-  .effort-rating button.effort-bubble:before {
-    /* For Safari 5.1 to 6.0 */
-    background: -webkit-linear-gradient(#eeeeee, #bbbbbb);
-    /* For Opera 11.1 to 12.0 */
-    background: -o-linear-gradient(#eeeeee, #bbbbbb);
-    /* For Firefox 3.6 to 15 */
-    background: -moz-linear-gradient(#eeeeee, #bbbbbb);
-    /* Standard syntax */
-    background: linear-gradient(#eeeeee, #bbbbbb);
-    outline: none;
-    border: 1px solid #888888;
-    border-radius: 4px; }
-  .effort-rating button.effort-bubble:hover:before {
-    /* For Safari 5.1 to 6.0 */
-    background: -webkit-linear-gradient(white, #bbbbbb);
-    /* For Opera 11.1 to 12.0 */
-    background: -o-linear-gradient(white, #bbbbbb);
-    /* For Firefox 3.6 to 15 */
-    background: -moz-linear-gradient(white, #bbbbbb);
-    /* Standard syntax */
-    background: linear-gradient(white, #bbbbbb); }
-  .effort-rating button.effort-bubble:active:before {
-    /* For Safari 5.1 to 6.0 */
-    background: -webkit-linear-gradient(#bbbbbb, #eeeeee);
-    /* For Opera 11.1 to 12.0 */
-    background: -o-linear-gradient(#bbbbbb, #eeeeee);
-    /* For Firefox 3.6 to 15 */
-    background: -moz-linear-gradient(#bbbbbb, #eeeeee);
-    /* Standard syntax */
-    background: linear-gradient(#bbbbbb, #eeeeee); }
-  .effort-rating button.effort-bubble:disabled:before {
-    background: #eeeeee;
-    cursor: default;
-    border-color: #bbbbbb; }
-  .effort-rating button.effort-bubble:before {
-    content: '';
-    display: block;
+  border: none;
+  outline: none; }
+  .effort-rating button.effort-clear:before {
+    font-family: fontello;
+    content: '\e802';
     width: 1em;
     height: 1em;
-    margin: auto; }
-  .effort-rating button.effort-bubble.active:before {
+    display: block;
+    margin: auto;
+    position: relative;
+    top: -0.25em; }
+  .effort-rating button.effort-clear:hover:before {
+    color: #ec4134; }
+  .effort-rating button.effort-bubble {
+    font-family: fontello; }
+    .effort-rating button.effort-bubble:before {
+      /* For Safari 5.1 to 6.0 */
+      background: -webkit-linear-gradient(#eeeeee, #bbbbbb);
+      /* For Opera 11.1 to 12.0 */
+      background: -o-linear-gradient(#eeeeee, #bbbbbb);
+      /* For Firefox 3.6 to 15 */
+      background: -moz-linear-gradient(#eeeeee, #bbbbbb);
+      /* Standard syntax */
+      background: linear-gradient(#eeeeee, #bbbbbb);
+      border: 1px solid #888888;
+      border-radius: 4px;
+      width: 1em;
+      height: 1em;
+      content: '\e0000';
+      display: block;
+      margin: auto; }
+    .effort-rating button.effort-bubble:hover:before {
+      /* For Safari 5.1 to 6.0 */
+      background: -webkit-linear-gradient(white, #bbbbbb);
+      /* For Opera 11.1 to 12.0 */
+      background: -o-linear-gradient(white, #bbbbbb);
+      /* For Firefox 3.6 to 15 */
+      background: -moz-linear-gradient(white, #bbbbbb);
+      /* Standard syntax */
+      background: linear-gradient(white, #bbbbbb); }
+    .effort-rating button.effort-bubble:active:before {
+      /* For Safari 5.1 to 6.0 */
+      background: -webkit-linear-gradient(#bbbbbb, #eeeeee);
+      /* For Opera 11.1 to 12.0 */
+      background: -o-linear-gradient(#bbbbbb, #eeeeee);
+      /* For Firefox 3.6 to 15 */
+      background: -moz-linear-gradient(#bbbbbb, #eeeeee);
+      /* Standard syntax */
+      background: linear-gradient(#bbbbbb, #eeeeee); }
+.effort-rating.rating-1 button.active {
+  font-family: fontello; }
+  .effort-rating.rating-1 button.active:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#34ccff, #0099cd);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#34ccff, #0099cd);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#34ccff, #0099cd);
+    /* Standard syntax */
+    background: linear-gradient(#34ccff, #0099cd);
+    border: 1px solid #004d67;
+    border-radius: 4px;
     width: 1em;
-    height: 1em; }
-.effort-rating.rating-1 button.active:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#34ccff, #0099cd);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#34ccff, #0099cd);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#34ccff, #0099cd);
-  /* Standard syntax */
-  background: linear-gradient(#34ccff, #0099cd);
-  outline: none;
-  border: 1px solid #004d67;
-  border-radius: 4px; }
-.effort-rating.rating-1 button.active:hover:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#67d8ff, #0099cd);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#67d8ff, #0099cd);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#67d8ff, #0099cd);
-  /* Standard syntax */
-  background: linear-gradient(#67d8ff, #0099cd); }
-.effort-rating.rating-1 button.active:active:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#0099cd, #34ccff);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#0099cd, #34ccff);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#0099cd, #34ccff);
-  /* Standard syntax */
-  background: linear-gradient(#0099cd, #34ccff); }
-.effort-rating.rating-1 button.active:disabled:before {
-  background: #34ccff;
-  cursor: default;
-  border-color: #0099cd; }
-.effort-rating.rating-2 button.active:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#ffc062, #fb9600);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#ffc062, #fb9600);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#ffc062, #fb9600);
-  /* Standard syntax */
-  background: linear-gradient(#ffc062, #fb9600);
-  outline: none;
-  border: 1px solid #955900;
-  border-radius: 4px; }
-.effort-rating.rating-2 button.active:hover:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#ffd495, #fb9600);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#ffd495, #fb9600);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#ffd495, #fb9600);
-  /* Standard syntax */
-  background: linear-gradient(#ffd495, #fb9600); }
-.effort-rating.rating-2 button.active:active:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#fb9600, #ffc062);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#fb9600, #ffc062);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#fb9600, #ffc062);
-  /* Standard syntax */
-  background: linear-gradient(#fb9600, #ffc062); }
-.effort-rating.rating-2 button.active:disabled:before {
-  background: #ffc062;
-  cursor: default;
-  border-color: #fb9600; }
-.effort-rating.rating-3 button.active:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#f59891, #ec4134);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#f59891, #ec4134);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#f59891, #ec4134);
-  /* Standard syntax */
-  background: linear-gradient(#f59891, #ec4134);
-  outline: none;
-  border: 1px solid #aa1b10;
-  border-radius: 4px; }
-.effort-rating.rating-3 button.active:hover:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#f9c4c0, #ec4134);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#f9c4c0, #ec4134);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#f9c4c0, #ec4134);
-  /* Standard syntax */
-  background: linear-gradient(#f9c4c0, #ec4134); }
-.effort-rating.rating-3 button.active:active:before {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#ec4134, #f59891);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#ec4134, #f59891);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#ec4134, #f59891);
-  /* Standard syntax */
-  background: linear-gradient(#ec4134, #f59891); }
-.effort-rating.rating-3 button.active:disabled:before {
-  background: #f59891;
-  cursor: default;
-  border-color: #ec4134; }
+    height: 1em;
+    content: '\e0000';
+    display: block;
+    margin: auto; }
+  .effort-rating.rating-1 button.active:hover:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#67d8ff, #0099cd);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#67d8ff, #0099cd);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#67d8ff, #0099cd);
+    /* Standard syntax */
+    background: linear-gradient(#67d8ff, #0099cd); }
+  .effort-rating.rating-1 button.active:active:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#0099cd, #34ccff);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#0099cd, #34ccff);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#0099cd, #34ccff);
+    /* Standard syntax */
+    background: linear-gradient(#0099cd, #34ccff); }
+.effort-rating.rating-2 button.active {
+  font-family: fontello; }
+  .effort-rating.rating-2 button.active:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#ffc062, #fb9600);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#ffc062, #fb9600);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#ffc062, #fb9600);
+    /* Standard syntax */
+    background: linear-gradient(#ffc062, #fb9600);
+    border: 1px solid #955900;
+    border-radius: 4px;
+    width: 1em;
+    height: 1em;
+    content: '\e0000';
+    display: block;
+    margin: auto; }
+  .effort-rating.rating-2 button.active:hover:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#ffd495, #fb9600);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#ffd495, #fb9600);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#ffd495, #fb9600);
+    /* Standard syntax */
+    background: linear-gradient(#ffd495, #fb9600); }
+  .effort-rating.rating-2 button.active:active:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#fb9600, #ffc062);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#fb9600, #ffc062);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#fb9600, #ffc062);
+    /* Standard syntax */
+    background: linear-gradient(#fb9600, #ffc062); }
+.effort-rating.rating-3 button.active {
+  font-family: fontello; }
+  .effort-rating.rating-3 button.active:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#f59891, #ec4134);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#f59891, #ec4134);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#f59891, #ec4134);
+    /* Standard syntax */
+    background: linear-gradient(#f59891, #ec4134);
+    border: 1px solid #aa1b10;
+    border-radius: 4px;
+    width: 1em;
+    height: 1em;
+    content: '\e0000';
+    display: block;
+    margin: auto; }
+  .effort-rating.rating-3 button.active:hover:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#f9c4c0, #ec4134);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#f9c4c0, #ec4134);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#f9c4c0, #ec4134);
+    /* Standard syntax */
+    background: linear-gradient(#f9c4c0, #ec4134); }
+  .effort-rating.rating-3 button.active:active:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#ec4134, #f59891);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#ec4134, #f59891);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#ec4134, #f59891);
+    /* Standard syntax */
+    background: linear-gradient(#ec4134, #f59891); }
 
 .effort-note textarea,
 .effort-note div {

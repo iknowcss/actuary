@@ -6,11 +6,16 @@
   $hard-color: rgb(236, 65, 52);
 
   @mixin bubble-button($base-color: $button-color) {
+    font-family: fontello;
     &:before {
       @include vertical-gradient(lighten($base-color, 20%), $base-color);
-      outline: none;
       border: 1px solid darken($base-color, 20%);
       border-radius: $button-border-radius;
+      width: 1em;
+      height: 1em;
+      content: '\e0000';
+      display: block;
+      margin: auto;
     }
     &:hover:before {
       @include vertical-gradient(lighten($base-color, 30%), $base-color);
@@ -18,15 +23,9 @@
     &:active:before {
       @include vertical-gradient($base-color, lighten($base-color, 20%));
     }
-    &:disabled:before {
-      background: lighten($base-color, 20%);
-      cursor: default;
-      border-color: $base-color;
-    }   
   }
 
   button {
-
     $available-space: 2.5em;
     $button-size: 2em;
     $button-margin: ($available-space - $button-size) / 2;
@@ -37,23 +36,26 @@
     background: none !important;
     padding: 0;
     border: none;
+    outline: none;
+
+    &.effort-clear {
+      &:before {
+        font-family: fontello;
+        content: '\e802';
+        width: 1em;
+        height: 1em;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -0.25em;
+      }
+      &:hover:before {
+        color: $danger-color;
+      }
+    }
 
     &.effort-bubble {
       @include bubble-button();
-    }
-
-    &.effort-bubble:before {
-      
-      content: '';
-      display: block;
-      width: 1em;
-      height: 1em;
-      margin: auto;
-    }
-
-    &.effort-bubble.active:before {
-      width: 1em;
-      height: 1em;
     }
   }
 
