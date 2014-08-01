@@ -225,6 +225,84 @@ body {
   margin-right: 10px;
   width: 60px; }
 
+form input:not([type]),
+form input[type='text'],
+form input[type='password'] {
+  box-sizing: border-box;
+  border: 1px solid #434443;
+  border-radius: 4px;
+  padding-left: 0.25em;
+  padding-right: 0.25em; }
+form button {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#eeeeee, #bbbbbb);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#eeeeee, #bbbbbb);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#eeeeee, #bbbbbb);
+  /* Standard syntax */
+  background: linear-gradient(#eeeeee, #bbbbbb);
+  outline: none;
+  border: 1px solid #888888;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1.5; }
+  form button:hover {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(white, #bbbbbb);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(white, #bbbbbb);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(white, #bbbbbb);
+    /* Standard syntax */
+    background: linear-gradient(white, #bbbbbb); }
+  form button:active {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#bbbbbb, #eeeeee);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#bbbbbb, #eeeeee);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#bbbbbb, #eeeeee);
+    /* Standard syntax */
+    background: linear-gradient(#bbbbbb, #eeeeee); }
+  form button:disabled {
+    background: #eeeeee;
+    cursor: default;
+    border-color: #bbbbbb; }
+form fieldset {
+  margin-top: 0.5em; }
+  form fieldset:first-child {
+    margin-top: 0; }
+  form fieldset label {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 300px;
+    line-height: 1.75em; }
+  form fieldset input:not([type]),
+  form fieldset input[type='text'],
+  form fieldset input[type='password'] {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 300px; }
+form .action input, form .action button, form .action a {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 140px; }
+form .action a {
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px; }
+
 body {
   margin-top: 75px; }
 
@@ -264,64 +342,6 @@ a {
     height: 0; }
   .container:after {
     clear: both; }
-
-form input:not([type]),
-form input[type='text'],
-form input[type='password'] {
-  box-sizing: border-box;
-  border: 1px solid #434443;
-  border-radius: 4px;
-  padding-left: 0.25em;
-  padding-right: 0.25em; }
-form button {
-  /* For Safari 5.1 to 6.0 */
-  background: -webkit-linear-gradient(#f7f7f7, #dddddd);
-  /* For Opera 11.1 to 12.0 */
-  background: -o-linear-gradient(#f7f7f7, #dddddd);
-  /* For Firefox 3.6 to 15 */
-  background: -moz-linear-gradient(#f7f7f7, #dddddd);
-  /* Standard syntax */
-  background: linear-gradient(#f7f7f7, #dddddd);
-  cursor: pointer;
-  border-radius: 4px;
-  border: 1px solid black;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  line-height: 1.5; }
-  form button:disabled {
-    cursor: default;
-    border-color: #a2a2a2; }
-form fieldset {
-  margin-top: 0.5em; }
-  form fieldset:first-child {
-    margin-top: 0; }
-  form fieldset label {
-    display: inline;
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 300px;
-    line-height: 1.75em; }
-  form fieldset input:not([type]),
-  form fieldset input[type='text'],
-  form fieldset input[type='password'] {
-    display: inline;
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 300px; }
-form .action input, form .action button, form .action a {
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 140px; }
-form .action a {
-  text-align: center;
-  padding-top: 1px;
-  padding-bottom: 1px; }
 
 header#logged-in {
   height: 50px;
@@ -424,45 +444,157 @@ ul.input-autocomplete {
 
 /* Effort rating component */
 .effort-rating button {
-  box-sizing: content-box;
-  font-family: fontello;
-  font-size: 24px;
-  width: 1em;
-  height: 1em;
-  text-align: center;
-  cursor: pointer;
-  background: none;
-  border: none;
-  margin: -0.5em 0;
-  padding: 0.5em;
-  outline: 0; }
-
-.effort-rating button:before {
-  width: 1.1em;
-  height: 1.1em;
-  display: inline-block; }
-
-.effort-rating button.effort-clear:before {
-  content: '\e802'; }
-
-.effort-rating button.effort-clear:hover:before {
-  color: #ec4134; }
-
-.effort-rating button.effort-bubble:before {
-  content: '\e800'; }
-
-.effort-rating button.effort-bubble.active:before {
-  content: '\e801';
-  top: -0.15em; }
-
-.effort-rating.rating-1 button.effort-bubble.active:before {
-  color: #0099cd; }
-
-.effort-rating.rating-2 button.effort-bubble.active:before {
-  color: #fb9600; }
-
-.effort-rating.rating-3 button.effort-bubble.active:before {
-  color: #ec4134; }
+  width: 2em;
+  height: 2em;
+  margin: 0.25em 0.5em 0.25em 0;
+  background: none !important;
+  padding: 0;
+  border: none; }
+  .effort-rating button.effort-bubble:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#eeeeee, #bbbbbb);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#eeeeee, #bbbbbb);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#eeeeee, #bbbbbb);
+    /* Standard syntax */
+    background: linear-gradient(#eeeeee, #bbbbbb);
+    outline: none;
+    border: 1px solid #888888;
+    border-radius: 4px; }
+  .effort-rating button.effort-bubble:hover:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(white, #bbbbbb);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(white, #bbbbbb);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(white, #bbbbbb);
+    /* Standard syntax */
+    background: linear-gradient(white, #bbbbbb); }
+  .effort-rating button.effort-bubble:active:before {
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(#bbbbbb, #eeeeee);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(#bbbbbb, #eeeeee);
+    /* For Firefox 3.6 to 15 */
+    background: -moz-linear-gradient(#bbbbbb, #eeeeee);
+    /* Standard syntax */
+    background: linear-gradient(#bbbbbb, #eeeeee); }
+  .effort-rating button.effort-bubble:disabled:before {
+    background: #eeeeee;
+    cursor: default;
+    border-color: #bbbbbb; }
+  .effort-rating button.effort-bubble:before {
+    content: '';
+    display: block;
+    width: 1em;
+    height: 1em;
+    margin: auto; }
+  .effort-rating button.effort-bubble.active:before {
+    width: 1em;
+    height: 1em; }
+.effort-rating.rating-1 button.active:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#34ccff, #0099cd);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#34ccff, #0099cd);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#34ccff, #0099cd);
+  /* Standard syntax */
+  background: linear-gradient(#34ccff, #0099cd);
+  outline: none;
+  border: 1px solid #004d67;
+  border-radius: 4px; }
+.effort-rating.rating-1 button.active:hover:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#67d8ff, #0099cd);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#67d8ff, #0099cd);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#67d8ff, #0099cd);
+  /* Standard syntax */
+  background: linear-gradient(#67d8ff, #0099cd); }
+.effort-rating.rating-1 button.active:active:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#0099cd, #34ccff);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#0099cd, #34ccff);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#0099cd, #34ccff);
+  /* Standard syntax */
+  background: linear-gradient(#0099cd, #34ccff); }
+.effort-rating.rating-1 button.active:disabled:before {
+  background: #34ccff;
+  cursor: default;
+  border-color: #0099cd; }
+.effort-rating.rating-2 button.active:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#ffc062, #fb9600);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#ffc062, #fb9600);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#ffc062, #fb9600);
+  /* Standard syntax */
+  background: linear-gradient(#ffc062, #fb9600);
+  outline: none;
+  border: 1px solid #955900;
+  border-radius: 4px; }
+.effort-rating.rating-2 button.active:hover:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#ffd495, #fb9600);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#ffd495, #fb9600);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#ffd495, #fb9600);
+  /* Standard syntax */
+  background: linear-gradient(#ffd495, #fb9600); }
+.effort-rating.rating-2 button.active:active:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#fb9600, #ffc062);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#fb9600, #ffc062);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#fb9600, #ffc062);
+  /* Standard syntax */
+  background: linear-gradient(#fb9600, #ffc062); }
+.effort-rating.rating-2 button.active:disabled:before {
+  background: #ffc062;
+  cursor: default;
+  border-color: #fb9600; }
+.effort-rating.rating-3 button.active:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#f59891, #ec4134);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#f59891, #ec4134);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#f59891, #ec4134);
+  /* Standard syntax */
+  background: linear-gradient(#f59891, #ec4134);
+  outline: none;
+  border: 1px solid #aa1b10;
+  border-radius: 4px; }
+.effort-rating.rating-3 button.active:hover:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#f9c4c0, #ec4134);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#f9c4c0, #ec4134);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#f9c4c0, #ec4134);
+  /* Standard syntax */
+  background: linear-gradient(#f9c4c0, #ec4134); }
+.effort-rating.rating-3 button.active:active:before {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(#ec4134, #f59891);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(#ec4134, #f59891);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(#ec4134, #f59891);
+  /* Standard syntax */
+  background: linear-gradient(#ec4134, #f59891); }
+.effort-rating.rating-3 button.active:disabled:before {
+  background: #f59891;
+  cursor: default;
+  border-color: #ec4134; }
 
 .effort-note textarea,
 .effort-note div {
@@ -645,10 +777,19 @@ header#logged-out h1 {
 #estimation-form-page .global-estimate-total-row .estimate-raw-total {
   text-align: right; }
 #estimation-form-page .global-estimate-total-row .estimate-raw-total {
-  visibility: hidden;
+  -webkit-transition: opacity 200ms;
+  /* Safari and Chrome */
+  -moz-transition: opacity 200ms;
+  /* Firefox */
+  -ms-transition: opacity 200ms;
+  /* Internet Explorer */
+  -o-transition: opacity 200ms;
+  /* Opera */
+  transition: opacity 200ms;
+  opacity: 0;
   color: #9b9b9b; }
 #estimation-form-page .global-estimate-total-row .estimate-total:hover + .estimate-raw-total {
-  visibility: visible; }
+  opacity: 1; }
 #estimation-form-page .global-estimate-total-row .estimate-add-fields {
   position: relative;
   left: 80px;
@@ -707,18 +848,16 @@ header#logged-out h1 {
     float: left;
     margin-left: 10px;
     margin-right: 10px;
-    width: 460px; }
+    width: 540px; }
   #estimation-form-page #estimation-form header h3.estimate-note-header {
     display: inline;
     float: left;
     margin-left: 10px;
     margin-right: 10px;
-    width: 460px; }
+    width: 380px; }
 #estimation-form-page #estimation-form .estimate-item-row .estimate-title,
-#estimation-form-page #estimation-form .estimate-item-row .estimate-effort,
 #estimation-form-page #estimation-form .estimate-item-row .estimate-note,
 #estimation-form-page #estimation-form .estimate-total-row .estimate-title,
-#estimation-form-page #estimation-form .estimate-total-row .estimate-effort,
 #estimation-form-page #estimation-form .estimate-total-row .estimate-note {
   padding-top: 0.5em;
   padding-bottom: 0.5em; }
@@ -735,14 +874,17 @@ header#logged-out h1 {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 220px; }
+  width: 300px; }
 #estimation-form-page #estimation-form .estimate-item-row .estimate-note,
 #estimation-form-page #estimation-form .estimate-total-row .estimate-note {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 460px; }
+  width: 380px; }
+#estimation-form-page #estimation-form .estimate-total-row .estimate-effort {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em; }
 #estimation-form-page #estimation-form .estimate-item-row:nth-child(2n+1) {
   background-color: #ebebeb; }
 #estimation-form-page #estimation-form .estimate-total-row {

@@ -1,0 +1,49 @@
+form {
+
+  input:not([type]),
+  input[type='text'],
+  input[type='password'] {
+    box-sizing: border-box;
+    border: 1px solid #434443;
+    border-radius: $button-border-radius;
+    padding: { left: 0.25em; right: 0.25em; }
+  }
+
+  button {
+    @include button-shading($button-color);
+    cursor: pointer;
+    border-radius: $button-border-radius;
+    margin: { top: 0; bottom: 0; }
+    padding: { top: 0; bottom: 0; }
+    line-height: 1.5;
+  
+  }
+
+  fieldset {
+    margin-top: 0.5em;
+    &:first-child {
+      margin-top: 0;
+    }
+
+    label {
+      @include row-cell(4);
+      line-height: 1.75em;
+    }
+
+    input:not([type]),
+    input[type='text'],
+    input[type='password'] {
+      @include row-cell(4);
+    }
+  }
+
+  .action {
+    input, button, a {
+      @include row-cell(2);
+    }
+    a {
+      text-align: center;
+      padding: { top: 1px; bottom: 1px }
+    }
+  }
+}

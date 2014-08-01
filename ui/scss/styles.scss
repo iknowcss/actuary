@@ -1,7 +1,6 @@
-@import 'reset';
-@import '960';
 
 $brand-color: #1788c3;
+$button-color: #bbbbbb;
 $danger-color: rgb(236, 65, 52);
 $button-border-radius: 4px;
 
@@ -24,6 +23,28 @@ $button-border-radius: 4px;
           transition: $definition;
 }
 
+@mixin button-shading($base-color: $button-color) {
+  @include vertical-gradient(lighten($base-color, 20%), $base-color);
+  outline: none;
+  border: 1px solid darken($base-color, 20%);
+  &:hover {
+    @include vertical-gradient(lighten($base-color, 30%), $base-color);
+  }
+  &:active {
+    @include vertical-gradient($base-color, lighten($base-color, 20%));
+  }
+  &:disabled {
+    background: lighten($base-color, 20%);
+    cursor: default;
+    border-color: $base-color;
+  }
+      
+}
+
+@import 'reset';
+@import '960';
+@import 'form';
+
 body {
   margin-top: 75px;
 }
@@ -45,60 +66,6 @@ a {
 
 .container {
   @include row();
-}
-
-form {
-
-  input:not([type]),
-  input[type='text'],
-  input[type='password'] {
-    box-sizing: border-box;
-    border: 1px solid #434443;
-    border-radius: $button-border-radius;
-    padding: { left: 0.25em; right: 0.25em; }
-  }
-
-  button {
-    @include vertical-gradient(#f7f7f7, #dddddd);
-    cursor: pointer;
-    border-radius: $button-border-radius;
-    border: 1px solid black;
-    margin: { top: 0; bottom: 0; }
-    padding: { top: 0; bottom: 0; }
-    line-height: 1.5;
-    &:disabled {
-      cursor: default;
-      border-color: #a2a2a2;
-    }
-  }
-
-  fieldset {
-    margin-top: 0.5em;
-    &:first-child {
-      margin-top: 0;
-    }
-
-    label {
-      @include row-cell(4);
-      line-height: 1.75em;
-    }
-
-    input:not([type]),
-    input[type='text'],
-    input[type='password'] {
-      @include row-cell(4);
-    }
-  }
-
-  .action {
-    input, button, a {
-      @include row-cell(2);
-    }
-    a {
-      text-align: center;
-      padding: { top: 1px; bottom: 1px }
-    }
-  }
 }
 
 header#logged-in {
