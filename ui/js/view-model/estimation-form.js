@@ -20,16 +20,8 @@
     });
 
     self.grandTotal = new EstimationTotal(self.groups);
-    self.grandTotal.initPokerPoints = ko.computed(function () {
-      var points = self.grandTotal.initPoints(),
-          len = PLANNING_POKER.length,
-          i;
-      if (!points) {
-        return 0;
-      }
-
-      // TODO
-    });
+    self.grandTotal.initPokerPoints = ko.computed(pokerPoints(self.grandTotal.initPoints));
+    self.grandTotal.postPokerPoints = ko.computed(pokerPoints(self.grandTotal.postPoints));
 
     self.hasNewFields = false;
     self.mergeNewFields = function () {
@@ -98,24 +90,44 @@
   /// - Estimation Total -------------------------------------------------------
 
   function EstimationTotal(estimationItems) {
-    function computeTotal(type) {
-      return function () {
-        return _.reduce(estimationItems, function (memo, item) {
-          var itemValue = 0;
-          if (item instanceof EstimationGroup) {
-            itemValue = item.total[type]();
-          } else {
-            itemValue = item[type]();
-          }
-          return memo + itemValue;
-        }, 0);
-      };
-    }
     
-    this.initRating = ko.computed(computeTotal('initRating'));
-    this.initPoints = ko.computed(computeTotal('initPoints'));
-    this.postRating = ko.computed(computeTotal('postRating'));
-    this.postPoints = ko.computed(computeTotal('postPoints'));
+    this.initRating = ko.computed(totalComputer(estimationItems, 'initRating'));
+    this.initPoints = ko.computed(totalComputer(estimationItems, 'initPoints'));
+    this.postRating = ko.computed(totalComputer(estimationItems, 'postRating'));
+    this.postPoints = ko.computed(totalComputer(estimationItems, 'postPoints'));
+  }
+
+  /// - Util -------------------------------------------------------------------
+
+  function totalComputer(estimationItems, type) {
+    return function () {
+      return _.reduce(estimationItems, function (memo, item) {
+        var itemValue = 0;
+        if (item instanceof EstimationGroup) {
+          itemValue = ko.utils.unwrapObservable(item.total[type]);
+        } else {
+          itemValue = ko.utils.unwrapObservable(item[type]);
+        }
+        return memo + itemValue;
+      }, 0);
+    };
+  }
+
+  function pokerPoints(pointAccessor) {
+    return function () {
+      var points = ko.utils.unwrapObservable(pointAccessor),
+          len = PLANNING_POKER.length,
+          i;
+      if (!points) {
+        return 0;
+      }
+      for (i = 0; i < len; i++) {
+        if (points <= PLANNING_POKER[i]) {
+          return PLANNING_POKER[i];
+        }
+      }
+      return PLANNING_POKER[len - 1];
+    }
   }
 
 }(window.actuary));

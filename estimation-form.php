@@ -43,12 +43,12 @@
     </h1>
 
     <span class="estimate-title">Estimate</span>
-    <span class="estimate-total" data-bind="text: grandTotal.initPoints"></span>
-    <span class="estimate-raw-total" data-bind="text: grandTotal.initPoints"></span>
+    <span class="estimate-total" data-bind="text: grandTotal.initPokerPoints() ? grandTotal.initPokerPoints() : '-'"></span>
+    <span class="estimate-raw-total" data-bind="text: grandTotal.initPoints().toFixed(2)"></span>
     <br/>
     <span class="estimate-title">Actual effort</span>
-    <span class="estimate-total" data-bind="text: grandTotal.postPoints"></span>
-    <span class="estimate-raw-total" data-bind="text: grandTotal.postPoints"></span>
+    <span class="estimate-total" data-bind="text: grandTotal.postPokerPoints() ? grandTotal.postPokerPoints() : '-'"></span>
+    <span class="estimate-raw-total" data-bind="text: grandTotal.postPoints().toFixed(2)"></span>
 
     <br data-bind="visible: hasNewFields"/>
     <span class="estimate-add-fields" data-bind="visible: hasNewFields">

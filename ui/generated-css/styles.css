@@ -1,6 +1,6 @@
 * {
   font: 24px open-sans, helvetica, sans-serif;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  -webkit-tap-highlight-color: transparent; }
 
 /* `XHTML, HTML4, HTML5 Reset
 ----------------------------------------------------------------------------------------------------*/
@@ -905,6 +905,8 @@ header#logged-out h1 {
   padding-bottom: 0.5em; }
 #estimation-form-page #estimation-form .estimate-item-row:nth-child(2n+1) {
   background-color: #ebebeb; }
+#estimation-form-page #estimation-form .estimate-item-row .estimate-effort {
+  padding-top: 0.2em; }
 #estimation-form-page #estimation-form .estimate-total-row {
   margin-top: 0.25em; }
   #estimation-form-page #estimation-form .estimate-total-row .estimate-score {
