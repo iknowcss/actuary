@@ -23,11 +23,6 @@
     self.grandTotal.initPokerPoints = ko.computed(pokerPoints(self.grandTotal.initPoints));
     self.grandTotal.postPokerPoints = ko.computed(pokerPoints(self.grandTotal.postPoints));
 
-    self.hasNewFields = false;
-    self.mergeNewFields = function () {
-      window.confirm('Are you sure?');
-    };
-
     self.toJson = ko.computed(function () {
       return {
         groups: self.groups.map(function (group) {

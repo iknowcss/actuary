@@ -49,11 +49,6 @@
     <span class="estimate-title">Actual effort</span>
     <span class="estimate-total" data-bind="text: grandTotal.postPokerPoints() ? grandTotal.postPokerPoints() : '-'"></span>
     <span class="estimate-raw-total" data-bind="text: grandTotal.postPoints().toFixed(2)"></span>
-
-    <br data-bind="visible: hasNewFields"/>
-    <span class="estimate-add-fields" data-bind="visible: hasNewFields">
-      <a href="#" data-bind="click: mergeNewFields">add new fields</a>
-    </span>
   </header>
 
   <form id="estimation-form">

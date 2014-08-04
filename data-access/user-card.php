@@ -2,8 +2,24 @@
 
   require_once "init-db.php";
 
+  function ensureUserCardVersion($testUserCard) {
+    $latestUserCardVersionNumber = 1;
+    if ($testUserCard) {
+      if (!isset($testUserCard['versionNumber']) || $testUserCard['versionNumber'] != $latestUserCardVersionNumber) {
+        $errorMessage = "The userCard data is out of date with version number "
+                        .$testUserCard['versionNumber']
+                        .". Expected $latestUserCardVersionNumber"
+                        .". Try running a migration";
+        echo $errorMessage;
+        throw new Exception($errorMessage);
+      }
+    }
+    return $testUserCard;
+  }
+
   function getUserCardById($id) {
-    return getDb()->userCards->findOne(array('_id' => new MongoId($id)));
+    ensureUserCardVersion(getDb()->userCards
+      ->findOne(array('_id' => new MongoId($id))));
   }
 
   function getUserCardsForUser($user) {
@@ -15,7 +31,7 @@
 
     while ($cursor->hasNext()) {
       $cursor->next();
-      array_push($userCards, $cursor->current());
+      array_push($userCards, ensureUserCardVersion($cursor->current()));
     }
 
     return $userCards;
@@ -36,20 +52,22 @@
       return getUserCardByCardNumber($user, $cardNumber, true);
     }
 
-    return $userCard;
+    return ensureUserCardVersion($userCard);
   }
 
   function createUserCardWithCardNumber($user, $cardNumber) {
-    getDb()->userCards->insert(array(
-      'userId' => $user['_id'],
-      'cardNumber' => $cardNumber
-    ));
+    getDb()->userCards
+        ->insert(array(
+          'userId'        => $user['_id'],
+          'cardNumber'    => $cardNumber,
+          'versionNumber' => $latestUserCardVersion
+        ));
   }
 
   function updateUserCardGroups($id, $groups) {
     getDb()->userCards->update(
-      array( '_id'    => new MongoId($id) ),
-      array( '$set' => array( 'groups' => $groups ) )
+      array('_id'  => new MongoId($id)),
+      array('$set' => array( 'groups' => $groups ))
     );
   }
 

@@ -1,0 +1,142 @@
+{
+  "groups": {
+    "database": {
+      "items": {
+        "queries": {
+          "name": "Queries",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "query-complexity": {
+          "name": "Query complexity",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "schema-changes": {
+          "name": "Schema changes",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        }
+      },
+      "name": "Database",
+      "ordinal": 192
+    },
+    "front-end": {
+      "items": {
+        "css": {
+          "name": "CSS",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "javascript": {
+          "name": "JavaScript",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "jsp": {
+          "name": "JSP",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        }
+      },
+      "name": "Front-end",
+      "ordinal": 64
+    },
+    "general": {
+      "items": {
+        "code-smell": {
+          "name": "Code smell",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "unknowns": {
+          "name": "Unknowns",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        }
+      },
+      "name": "General",
+      "ordinal": 320
+    },
+    "middle": {
+      "items": {
+        "controller": {
+          "name": "Controller",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "jrxml": {
+          "name": "JRXML",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "model": {
+          "name": "Model",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "repository": {
+          "name": "Repository",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "service": {
+          "name": "Service",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        }
+      },
+      "name": "Middle",
+      "ordinal": 124
+    },
+    "testing": {
+      "items": {
+        "e2e": {
+          "name": "E2E",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "modify-scenarios": {
+          "name": "Modify scenarios",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "modify-step-defs": {
+          "name": "Modify step defs",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "new-scenarios": {
+          "name": "New scenarios",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        },
+        "new-step-defs": {
+          "name": "New step defs",
+          "initRating": 0,
+          "postRating": 0,
+          "weight": 25
+        }
+      },
+      "name": "Testing",
+      "ordinal": 256
+    }
+  }
+}
