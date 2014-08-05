@@ -32,27 +32,18 @@
   }
 
   function saveEstimationForm(userCardId, formData) {
-    var request = new XMLHttpRequest();
-    request.open('PUT', './api/v1/user-card.php', true);
-    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
     formData.userCardId = userCardId;
 
-    request.onload = function() {
-      var responseData;
-      if (request.status >= 200 && request.status < 400) {
-        console.log('Success');
-      } else {
-        console.log('HTTP Error: ' + request.status);
-      }
-    };
-
-    request.onerror = function() {
-      console.log('Request error!');
-    };
-
     console.log('Send user card estimation to server', JSON.stringify(formData));
-    request.send(JSON.stringify(formData));
+    $.ajax('./api/v1/user-card.php', {
+      dataType  : 'json',
+      type      : 'PUT',
+      data      : JSON.stringify(formData)
+    }).done(function () {
+      console.log('Success');
+    }).fail(function () {
+      console.log('Request error!');
+    });
   }
 
 }(window.actuary, window.ko));

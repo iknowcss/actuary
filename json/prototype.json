@@ -6,19 +6,19 @@
           "name": "Queries",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "query-complexity": {
           "name": "Query complexity",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "schema-changes": {
           "name": "Schema changes",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         }
       },
       "name": "Database",
@@ -30,19 +30,19 @@
           "name": "CSS",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "javascript": {
           "name": "JavaScript",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "jsp": {
           "name": "JSP",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         }
       },
       "name": "Front-end",
@@ -54,13 +54,13 @@
           "name": "Code smell",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "unknowns": {
           "name": "Unknowns",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         }
       },
       "name": "General",
@@ -72,31 +72,31 @@
           "name": "Controller",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "jrxml": {
           "name": "JRXML",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "model": {
           "name": "Model",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "repository": {
           "name": "Repository",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "service": {
           "name": "Service",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         }
       },
       "name": "Middle",
@@ -108,31 +108,31 @@
           "name": "E2E",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "modify-scenarios": {
           "name": "Modify scenarios",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "modify-step-defs": {
           "name": "Modify step defs",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "new-scenarios": {
           "name": "New scenarios",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         },
         "new-step-defs": {
           "name": "New step defs",
           "initRating": 0,
           "postRating": 0,
-          "weight": 25
+          "note": "--"
         }
       },
       "name": "Testing",

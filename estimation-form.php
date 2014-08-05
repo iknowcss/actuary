@@ -71,27 +71,13 @@
           <div data-bind="visible: $parents[1].tab() == 'ESTIMATE'">
             <div class="estimate-title" data-bind="text: name"></div>
             <div class="estimate-effort" data-bind="effortRating: initRating"></div>
-            <div class="estimate-score" data-bind="text: initPoints() ? initPoints().toFixed(2) : ''"></div>
           </div>
           <div data-bind="visible: $parents[1].tab() == 'ACTUAL'">
             <div class="estimate-title" data-bind="text: name"></div>
             <div class="estimate-effort" data-bind="effortRating: postRating"></div>
-            <div class="estimate-score" data-bind="text: postPoints() ? postPoints().toFixed(2) : ''"></div>
           </div>
           <div class="estimate-note" data-bind="effortNote: note"></div>
         </div>
-      </div>
-
-      <div class="container estimate-total-row">
-        <div data-bind="visible: $parent.tab() == 'ESTIMATE'">
-          <div class="estimate-title"><b>Partial points:</b></div>
-          <div class="estimate-score" data-bind="text: total.initPoints().toFixed(2)"></div>
-        </div>
-        <div data-bind="visible: $parent.tab() == 'ACTUAL'">
-          <div class="estimate-title"><b>Partial points:</b></div>
-          <div class="estimate-score" data-bind="text: total.postPoints().toFixed(2)"></div>
-        </div>
-        <div class="estimate-note"></div>
       </div>
     </section>
     <!-- /ko -->

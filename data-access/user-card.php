@@ -18,7 +18,7 @@
   }
 
   function getUserCardById($id) {
-    ensureUserCardVersion(getDb()->userCards
+    return ensureUserCardVersion(getDb()->userCards
       ->findOne(array('_id' => new MongoId($id))));
   }
 

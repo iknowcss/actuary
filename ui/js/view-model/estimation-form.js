@@ -1,7 +1,8 @@
 (function (actuary) {
 
   var PLANNING_POKER = [ 1, 2, 3, 5, 8, 13, 20, 40 ],
-      DEFAULT_POINT_WEIGHT = 0.25,
+      DEFAULT_POINT_WEIGHT = 25,
+      POINT_DIVISOR = 100,
       ESTIMATE = 'ESTIMATE',
       ACTUAL = 'ACTUAL';
 
@@ -15,8 +16,8 @@
 
     self.tab = ko.observable(ESTIMATE);
 
-    self.groups = options.groups.map(function (group) {
-      return new EstimationGroup(group);
+    self.groups = _.map(options.groups, function (group, id) {
+      return new EstimationGroup(group, id);
     });
 
     self.grandTotal = new EstimationTotal(self.groups);
@@ -25,51 +26,62 @@
 
     self.toJson = ko.computed(function () {
       return {
-        groups: self.groups.map(function (group) {
-          return group.toJson();
-        })
+        groups: mapJsonById(self.groups)
       };
     });
   }
 
   /// - Estimation Group -------------------------------------------------------
 
-  function EstimationGroup(group) {
-    var self = this;
+  function EstimationGroup(group, groupId, pointWeightMap) {
+    var self = this,
+        groupPointWeightMap;
 
+    if (pointWeightMap && pointWeightMap.hasOwnProperty(groupId)) {
+      groupPointWeightMap = pointWeightMap[groupId];
+    } else {
+      groupPointWeightMap = {};
+    }
+
+    self.id = groupId;
     self.name = group.name;
+    self.ordinal = group.ordinal;
     self.items = [];
 
-    group.items.forEach(function (item) {
-      self.items.push(new EstimationItem(item));
+    _.each(group.items, function (item, itemId) {
+      var pointWeight = groupPointWeightMap[itemId] || DEFAULT_POINT_WEIGHT;
+      self.items.push(new EstimationItem(item, itemId, pointWeight));
     });
 
     self.total = new EstimationTotal(self.items);
 
     self.toJson = ko.computed(function () {
       return {
-        name  : self.name,
-        items : self.items.map(function (item) { return item.toJson(); })
+        name    : self.name,
+        ordinal : self.ordinal,
+        items   : mapJsonById(self.items)
       };
     });
   }
 
   /// - Estimation item --------------------------------------------------------
 
-  function EstimationItem(item) {
+  function EstimationItem(item, id, pointWeight) {
     var self = this;
 
+    self.id = id;
     self.name = item.name;
-    self.pointWeight = ko.observable(item.pointWeight || DEFAULT_POINT_WEIGHT);
+    self.pointWeight = pointWeight;
     self.initRating = ko.observable(item.initRating || 0);
     self.postRating = ko.observable(item.postRating || 0);
     self.note = ko.observable(item.note);
 
     self.initPoints = ko.computed(function () {
-      return self.initRating() * self.pointWeight();
+      return self.initRating() * self.pointWeight / POINT_DIVISOR;
     });
+
     self.postPoints = ko.computed(function () {
-      return self.postRating() * self.pointWeight();
+      return self.postRating() * self.pointWeight / POINT_DIVISOR;
     });
 
     self.toJson = ko.computed(function () {
@@ -85,7 +97,6 @@
   /// - Estimation Total -------------------------------------------------------
 
   function EstimationTotal(estimationItems) {
-    
     this.initRating = ko.computed(totalComputer(estimationItems, 'initRating'));
     this.initPoints = ko.computed(totalComputer(estimationItems, 'initPoints'));
     this.postRating = ko.computed(totalComputer(estimationItems, 'postRating'));
@@ -93,6 +104,14 @@
   }
 
   /// - Util -------------------------------------------------------------------
+
+  function mapJsonById(items) {
+    var map = {};
+    items.forEach(function (item) {
+      map[item.id] = item.toJson();
+    });
+    return map;
+  }
 
   function totalComputer(estimationItems, type) {
     return function () {
