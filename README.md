@@ -1,4 +1,4 @@
 actuary
 =======
 
-Simple PHP app to aide in estimating development effort
+Simple PHP app to aid in estimating development effort
